@@ -8,7 +8,7 @@
         that shows today's sales records and invoices.
     """,
     'author': 'Techvizor',
-    'depends': ['base', 'sale', 'account'],
+    'depends': ['base', 'sale', 'account', 'spreadsheet'],
     'data': [
         'views/dashboard_views.xml',
         'static/src/js/dashboard_today.js',
