@@ -1,0 +1,492 @@
+2026-04-03 06:05:59,005 21464 INFO ? odoo: Odoo version 18.0 
+2026-04-03 06:05:59,006 21464 INFO ? odoo: Using configuration file at F:\odoo18\Neotech\odoo18.conf 
+2026-04-03 06:05:59,006 21464 INFO ? odoo: addons paths: ['F:\\odoo18\\odoo\\odoo\\addons', 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\addons\\18.0', 'f:\\odoo18\\odoo\\addons', 'f:\\odoo18\\neotech', 'f:\\odoo18\\odoo\\odoo\\addons'] 
+2026-04-03 06:05:59,006 21464 INFO ? odoo: database: odoo@localhost:5432 
+2026-04-03 06:05:59,223 21464 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe 
+2026-04-03 06:05:59,244 21464 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe 
+2026-04-03 06:05:59,479 21464 INFO ? odoo.service.server: HTTP service (werkzeug) running on DESKTOP-RGAP4VA:8888 
+2026-04-03 06:05:59,638 21464 INFO rv_demo4 odoo.modules.loading: loading 1 modules... 
+2026-04-03 06:05:59,646 21464 INFO rv_demo4 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-04-03 06:05:59,757 21464 INFO rv_demo4 odoo.modules.loading: loading 95 modules... 
+2026-04-03 06:06:01,285 21464 INFO rv_demo4 odoo.modules.loading: 95 modules loaded in 1.53s, 0 queries (+0 extra) 
+2026-04-03 06:06:01,510 21464 INFO rv_demo4 odoo.modules.loading: Modules loaded. 
+2026-04-03 06:06:01,517 21464 INFO rv_demo4 odoo.modules.registry: Registry loaded in 2.038s 
+2026-04-03 06:06:21,542 21464 INFO rv_demo4 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-04-03 06:06:21,646 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:21] "GET / HTTP/1.1" 303 - 4 0.007 0.100
+2026-04-03 06:06:21,659 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:21] "GET /odoo HTTP/1.1" 303 - 1 0.000 0.003
+2026-04-03 06:06:22,182 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:22] "GET /web/login?redirect=%2Fodoo%3F HTTP/1.1" 200 - 60 0.040 0.334
+2026-04-03 06:06:23,667 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'account_invoice_payment_status_split', defaulting to LGPL-3 
+2026-04-03 06:06:23,667 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'account_invoice_payment_status_split', defaulting to LGPL-3 
+2026-04-03 06:06:23,675 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'audit_trail_control', defaulting to LGPL-3 
+2026-04-03 06:06:23,675 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'audit_trail_control', defaulting to LGPL-3 
+2026-04-03 06:06:23,709 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'crm_opportunity_stage_flow', defaulting to LGPL-3 
+2026-04-03 06:06:23,710 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'crm_opportunity_stage_flow', defaulting to LGPL-3 
+2026-04-03 06:06:23,722 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'dashboard_today_period', defaulting to LGPL-3 
+2026-04-03 06:06:23,723 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'dashboard_today_period', defaulting to LGPL-3 
+2026-04-03 06:06:23,732 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'inventory_ship_to_address', defaulting to LGPL-3 
+2026-04-03 06:06:23,733 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'inventory_ship_to_address', defaulting to LGPL-3 
+2026-04-03 06:06:23,736 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'invoice_report', defaulting to LGPL-3 
+2026-04-03 06:06:23,736 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'invoice_report', defaulting to LGPL-3 
+2026-04-03 06:06:23,739 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'justdial_integration', defaulting to LGPL-3 
+2026-04-03 06:06:23,739 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'justdial_integration', defaulting to LGPL-3 
+2026-04-03 06:06:23,770 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'stock_quant_views', defaulting to LGPL-3 
+2026-04-03 06:06:23,770 21464 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'stock_quant_views', defaulting to LGPL-3 
+2026-04-03 06:06:23,946 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:23] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.004 1.427
+2026-04-03 06:06:28,697 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e03652c/web.assets_frontend.min.css (id:887) 
+2026-04-03 06:06:28,698 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Deleting attachments [880] (matching /web/assets/_______/web.assets_frontend.min.css) because it was replaced with /web/assets/e03652c/web.assets_frontend.min.css 
+2026-04-03 06:06:28,745 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:28] "GET /web/assets/e03652c/web.assets_frontend.min.css HTTP/1.1" 200 - 14 0.088 6.145
+2026-04-03 06:06:29,176 21464 ERROR rv_demo4 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\http.py", line 2554, in __call__
+    response = request._serve_db()
+  File "F:\odoo18\odoo\odoo\http.py", line 2081, in _serve_db
+    return self._transactioning(
+  File "F:\odoo18\odoo\odoo\http.py", line 2144, in _transactioning
+    return service_model.retrying(func, env=self.env)
+  File "F:\odoo18\odoo\odoo\service\model.py", line 156, in retrying
+    result = func()
+  File "F:\odoo18\odoo\odoo\http.py", line 2111, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+  File "F:\odoo18\odoo\odoo\http.py", line 2272, in dispatch
+    return self.request.registry['ir.http']._dispatch(endpoint)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_http.py", line 333, in _dispatch
+    result = endpoint(**request.params)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\mail\models\discuss\mail_guest.py", line 38, in wrapper
+    return func(self, *args, **kwargs)
+  File "f:\odoo18\odoo\addons\mail\controllers\discuss\binary.py", line 68, in content_image
+    return super().content_image(*args, **kwargs)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\web\controllers\binary.py", line 185, in content_image
+    stream = request.env['ir.binary']._get_image_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 203, in _get_image_stream_from
+    stream = self._get_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 127, in _get_stream_from
+    stream = self._record_to_stream(record, field_name)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 86, in _record_to_stream
+    return field_attachment._to_http_stream()
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 805, in _to_http_stream
+    stat = os.stat(stream.path)
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4/d0/d09086a0794cf3070f12e742f27126254b4e2b5a'
+2026-04-03 06:06:29,180 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:29] "GET /web/image/res.company/1/favicon HTTP/1.1" 500 - 11 0.010 0.014
+2026-04-03 06:06:43,485 21464 INFO rv_demo4 odoo.addons.base.models.res_users: Login successful for db:rv_demo4 login:admin from 127.0.0.1 
+2026-04-03 06:06:43,497 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:43] "POST /web/login HTTP/1.1" 303 - 36 0.070 0.551
+2026-04-03 06:06:43,516 21464 INFO rv_demo4 odoo.addons.base.models.res_device: User 2 inserts device log (zVW7B6BQqaLuW3REOfiBtJyXqIKYO3QtbEyKSNVlsh) 
+2026-04-03 06:06:43,586 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\37/3709cc2e0d5df4c199f96c6d07e2aaf29a63bcba 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\37/3709cc2e0d5df4c199f96c6d07e2aaf29a63bcba'
+2026-04-03 06:06:43,587 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\c2/c21721ec3ec2e8d086eebf804e0ede5f25aa14d7 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\c2/c21721ec3ec2e8d086eebf804e0ede5f25aa14d7'
+2026-04-03 06:06:43,587 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\51/517a97a04c19cdd67572ff8a0ef89fad5a2c278e 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\51/517a97a04c19cdd67572ff8a0ef89fad5a2c278e'
+2026-04-03 06:06:43,588 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\1c/1c16002d10f6155661a6ae83417fee29e281fb7b 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\1c/1c16002d10f6155661a6ae83417fee29e281fb7b'
+2026-04-03 06:06:43,588 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\a4/a4511b76524b49a86d44d27508dd20f056bfe827 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\a4/a4511b76524b49a86d44d27508dd20f056bfe827'
+2026-04-03 06:06:43,589 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\f3/f31bdf173e5748b875ca5e389e1edba54b4bff25 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\f3/f31bdf173e5748b875ca5e389e1edba54b4bff25'
+2026-04-03 06:06:43,589 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\5e/5e1a46f3ba53e2d6329ba3c74fa21b8acd8fd6c7 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\5e/5e1a46f3ba53e2d6329ba3c74fa21b8acd8fd6c7'
+2026-04-03 06:06:43,590 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\1e/1edaad14fd7c39fec02631992022a1f404b58e57 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\1e/1edaad14fd7c39fec02631992022a1f404b58e57'
+2026-04-03 06:06:43,590 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\f9/f9cf2c8b67d3ebc89ca4d180ef207a248c4e3130 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\f9/f9cf2c8b67d3ebc89ca4d180ef207a248c4e3130'
+2026-04-03 06:06:43,591 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\ca/cad9804f210a8c1e26c8ebab07b8056b9d5ec66b 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\ca/cad9804f210a8c1e26c8ebab07b8056b9d5ec66b'
+2026-04-03 06:06:43,591 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\74/744fc247b813c44f4cf02357706e88b283cb0f97 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\74/744fc247b813c44f4cf02357706e88b283cb0f97'
+2026-04-03 06:06:43,591 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\3d/3d7a7360fe4a73a90dd3b4ba554a9254ed61e864 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\3d/3d7a7360fe4a73a90dd3b4ba554a9254ed61e864'
+2026-04-03 06:06:43,592 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\b7/b73a9deb85def8a1a00e4d545c4f79747d78f487 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\tools\cache.py", line 103, in lookup
+    r = d[key]
+  File "<decorator-gen-6>", line 2, in __getitem__
+  File "F:\odoo18\odoo\odoo\tools\func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "F:\odoo18\odoo\odoo\tools\lru.py", line 33, in __getitem__
+    a = self.d[obj]
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x000001ABBD43F400>, 2, '', ('en_US',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\b7/b73a9deb85def8a1a00e4d545c4f79747d78f487'
+2026-04-03 06:06:44,594 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:44] "GET /odoo HTTP/1.1" 200 - 93 0.073 1.017
+2026-04-03 06:06:45,231 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:45] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.059 0.142
+2026-04-03 06:06:51,874 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/6dcc046/web.assets_web.min.css (id:888) 
+2026-04-03 06:06:51,875 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Deleting attachments [883] (matching /web/assets/_______/web.assets_web.min.css) because it was replaced with /web/assets/6dcc046/web.assets_web.min.css 
+2026-04-03 06:06:51,911 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:51] "GET /web/webclient/load_menus/8441fd767c1905add346c06bafbbbc824b01d7b184b2eb108b932c54c2fea04f HTTP/1.1" 200 - 112 6.691 0.208
+2026-04-03 06:06:51,971 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:06:51] "GET /web/assets/6dcc046/web.assets_web.min.css HTTP/1.1" 200 - 14 0.081 7.275
+2026-04-03 06:07:00,396 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/f05876b/web.assets_web_print.min.css (id:889) 
+2026-04-03 06:07:00,397 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Deleting attachments [884] (matching /web/assets/_______/web.assets_web_print.min.css) because it was replaced with /web/assets/f05876b/web.assets_web_print.min.css 
+2026-04-03 06:07:00,415 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:00] "GET /web/assets/f05876b/web.assets_web_print.min.css HTTP/1.1" 200 - 10 0.044 8.070
+2026-04-03 06:07:02,059 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/8fb57b5/web.assets_web.min.js (id:890) 
+2026-04-03 06:07:02,060 21464 INFO rv_demo4 odoo.addons.base.models.assetsbundle: Deleting attachments [885] (matching /web/assets/_______/web.assets_web.min.js) because it was replaced with /web/assets/8fb57b5/web.assets_web.min.js 
+2026-04-03 06:07:03,265 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:03] "GET /web/assets/8fb57b5/web.assets_web.min.js HTTP/1.1" 200 - 13 0.037 18.227
+2026-04-03 06:07:04,188 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:04] "POST /web/action/load HTTP/1.1" 200 - 6 0.003 0.008
+2026-04-03 06:07:04,297 21464 ERROR rv_demo4 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\http.py", line 2554, in __call__
+    response = request._serve_db()
+  File "F:\odoo18\odoo\odoo\http.py", line 2081, in _serve_db
+    return self._transactioning(
+  File "F:\odoo18\odoo\odoo\http.py", line 2144, in _transactioning
+    return service_model.retrying(func, env=self.env)
+  File "F:\odoo18\odoo\odoo\service\model.py", line 156, in retrying
+    result = func()
+  File "F:\odoo18\odoo\odoo\http.py", line 2111, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+  File "F:\odoo18\odoo\odoo\http.py", line 2272, in dispatch
+    return self.request.registry['ir.http']._dispatch(endpoint)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_http.py", line 333, in _dispatch
+    result = endpoint(**request.params)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\mail\models\discuss\mail_guest.py", line 38, in wrapper
+    return func(self, *args, **kwargs)
+  File "f:\odoo18\odoo\addons\mail\controllers\discuss\binary.py", line 68, in content_image
+    return super().content_image(*args, **kwargs)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\web\controllers\binary.py", line 185, in content_image
+    stream = request.env['ir.binary']._get_image_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 203, in _get_image_stream_from
+    stream = self._get_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 127, in _get_stream_from
+    stream = self._record_to_stream(record, field_name)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 86, in _record_to_stream
+    return field_attachment._to_http_stream()
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 805, in _to_http_stream
+    stat = os.stat(stream.path)
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4/d0/d09086a0794cf3070f12e742f27126254b4e2b5a'
+2026-04-03 06:07:04,299 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:04] "GET /web/image/res.company/1/favicon HTTP/1.1" 500 - 9 0.008 0.010
+2026-04-03 06:07:04,339 21464 INFO rv_demo4 odoo.addons.base.models.ir_attachment: _read_file reading c:\users\admin\appdata\local\openerp s.a\odoo\filestore\rv_demo4\f6/f6ef5c3e4f6b0bb9264106dfa871c53b8ccbaf73 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 122, in _file_read
+    with open(full_path, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4\\f6/f6ef5c3e4f6b0bb9264106dfa871c53b8ccbaf73'
+2026-04-03 06:07:04,343 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:04] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.043 0.017
+2026-04-03 06:07:04,351 21464 ERROR rv_demo4 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\http.py", line 2554, in __call__
+    response = request._serve_db()
+  File "F:\odoo18\odoo\odoo\http.py", line 2081, in _serve_db
+    return self._transactioning(
+  File "F:\odoo18\odoo\odoo\http.py", line 2144, in _transactioning
+    return service_model.retrying(func, env=self.env)
+  File "F:\odoo18\odoo\odoo\service\model.py", line 156, in retrying
+    result = func()
+  File "F:\odoo18\odoo\odoo\http.py", line 2111, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+  File "F:\odoo18\odoo\odoo\http.py", line 2272, in dispatch
+    return self.request.registry['ir.http']._dispatch(endpoint)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_http.py", line 333, in _dispatch
+    result = endpoint(**request.params)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\bus\controllers\websocket.py", line 64, in get_websocket_worker_bundle
+    stream = request.env['ir.binary']._get_stream_from(bundle.js())
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 127, in _get_stream_from
+    stream = self._record_to_stream(record, field_name)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 74, in _record_to_stream
+    return record._to_http_stream()
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 805, in _to_http_stream
+    stat = os.stat(stream.path)
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4/48/48b17217c06f9b590f8dc609523b3aec8712e45e'
+2026-04-03 06:07:04,352 21464 ERROR rv_demo4 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\http.py", line 2554, in __call__
+    response = request._serve_db()
+  File "F:\odoo18\odoo\odoo\http.py", line 2081, in _serve_db
+    return self._transactioning(
+  File "F:\odoo18\odoo\odoo\http.py", line 2144, in _transactioning
+    return service_model.retrying(func, env=self.env)
+  File "F:\odoo18\odoo\odoo\service\model.py", line 156, in retrying
+    result = func()
+  File "F:\odoo18\odoo\odoo\http.py", line 2111, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+  File "F:\odoo18\odoo\odoo\http.py", line 2272, in dispatch
+    return self.request.registry['ir.http']._dispatch(endpoint)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_http.py", line 333, in _dispatch
+    result = endpoint(**request.params)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\mail\models\discuss\mail_guest.py", line 38, in wrapper
+    return func(self, *args, **kwargs)
+  File "f:\odoo18\odoo\addons\mail\controllers\discuss\binary.py", line 68, in content_image
+    return super().content_image(*args, **kwargs)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\web\controllers\binary.py", line 185, in content_image
+    stream = request.env['ir.binary']._get_image_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 203, in _get_image_stream_from
+    stream = self._get_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 127, in _get_stream_from
+    stream = self._record_to_stream(record, field_name)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 86, in _record_to_stream
+    return field_attachment._to_http_stream()
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 805, in _to_http_stream
+    stat = os.stat(stream.path)
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4/b6/b6a3cdaa2cec346455710636e1f000edcff7d706'
+2026-04-03 06:07:04,366 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:04] "GET /bus/websocket_worker_bundle?v=18.0-5 HTTP/1.1" 500 - 4 0.007 0.026
+2026-04-03 06:07:04,368 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:04] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 500 - 4 0.009 0.029
+2026-04-03 06:07:04,445 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:04] "POST /mail/data HTTP/1.1" 200 - 84 0.105 0.059
+2026-04-03 06:07:05,196 21464 ERROR rv_demo4 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\http.py", line 2554, in __call__
+    response = request._serve_db()
+  File "F:\odoo18\odoo\odoo\http.py", line 2081, in _serve_db
+    return self._transactioning(
+  File "F:\odoo18\odoo\odoo\http.py", line 2144, in _transactioning
+    return service_model.retrying(func, env=self.env)
+  File "F:\odoo18\odoo\odoo\service\model.py", line 156, in retrying
+    result = func()
+  File "F:\odoo18\odoo\odoo\http.py", line 2111, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+  File "F:\odoo18\odoo\odoo\http.py", line 2272, in dispatch
+    return self.request.registry['ir.http']._dispatch(endpoint)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_http.py", line 333, in _dispatch
+    result = endpoint(**request.params)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\mail\models\discuss\mail_guest.py", line 38, in wrapper
+    return func(self, *args, **kwargs)
+  File "f:\odoo18\odoo\addons\mail\controllers\discuss\binary.py", line 68, in content_image
+    return super().content_image(*args, **kwargs)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\web\controllers\binary.py", line 185, in content_image
+    stream = request.env['ir.binary']._get_image_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 203, in _get_image_stream_from
+    stream = self._get_stream_from(
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 127, in _get_stream_from
+    stream = self._record_to_stream(record, field_name)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 86, in _record_to_stream
+    return field_attachment._to_http_stream()
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 805, in _to_http_stream
+    stat = os.stat(stream.path)
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4/d0/d09086a0794cf3070f12e742f27126254b4e2b5a'
+2026-04-03 06:07:05,197 21464 ERROR rv_demo4 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "F:\odoo18\odoo\odoo\http.py", line 2554, in __call__
+    response = request._serve_db()
+  File "F:\odoo18\odoo\odoo\http.py", line 2081, in _serve_db
+    return self._transactioning(
+  File "F:\odoo18\odoo\odoo\http.py", line 2144, in _transactioning
+    return service_model.retrying(func, env=self.env)
+  File "F:\odoo18\odoo\odoo\service\model.py", line 156, in retrying
+    result = func()
+  File "F:\odoo18\odoo\odoo\http.py", line 2111, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+  File "F:\odoo18\odoo\odoo\http.py", line 2272, in dispatch
+    return self.request.registry['ir.http']._dispatch(endpoint)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_http.py", line 333, in _dispatch
+    result = endpoint(**request.params)
+  File "F:\odoo18\odoo\odoo\http.py", line 754, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "f:\odoo18\odoo\addons\bus\controllers\websocket.py", line 64, in get_websocket_worker_bundle
+    stream = request.env['ir.binary']._get_stream_from(bundle.js())
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 127, in _get_stream_from
+    stream = self._record_to_stream(record, field_name)
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_binary.py", line 74, in _record_to_stream
+    return record._to_http_stream()
+  File "F:\odoo18\odoo\odoo\addons\base\models\ir_attachment.py", line 805, in _to_http_stream
+    stat = os.stat(stream.path)
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'c:\\users\\admin\\appdata\\local\\openerp s.a\\odoo\\filestore\\rv_demo4/48/48b17217c06f9b590f8dc609523b3aec8712e45e'
+2026-04-03 06:07:05,199 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:05] "GET /web/image/res.company/1/favicon HTTP/1.1" 500 - 4 0.006 0.012
+2026-04-03 06:07:05,200 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:05] "GET /bus/websocket_worker_bundle?v=18.0-5 HTTP/1.1" 500 - 3 0.003 0.014
+2026-04-03 06:07:05,260 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:05] "POST /mail/data HTTP/1.1" 200 - 66 0.062 0.065
+2026-04-03 06:07:05,404 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:07:05] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.003 0.004
+2026-04-03 06:10:01,655 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) starting 
+2026-04-03 06:10:01,665 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) done in 0.010s 
+2026-04-03 06:10:01,669 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) processed 0 records, 0 records remaining 
+2026-04-03 06:10:01,673 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) completed 
+2026-04-03 06:16:45,967 21464 INFO rv_demo4 werkzeug: 127.0.0.1 - - [03/Apr/2026 06:16:45] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.002 0.014
+2026-04-03 06:20:01,999 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) starting 
+2026-04-03 06:20:02,015 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) done in 0.015s 
+2026-04-03 06:20:02,018 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) processed 0 records, 0 records remaining 
+2026-04-03 06:20:02,024 21464 INFO rv_demo4 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (21) completed 

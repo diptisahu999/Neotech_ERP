@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Project Task Form View to Show All Assignees by Default -->
+    <record id="view_project_task_form_all_users" model="ir.ui.view">
+        <field name="name">project.task.form.all.users</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_ids']" position="attributes">
+                <attribute name="options">{"no_open": False, "no_create": False, "no_create_edit": False}</attribute>
+                <attribute name="context">{}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add Import Stages action to Task Type action window -->
+    <record id="action_import_stages_from_project" model="ir.actions.act_window">
+        <field name="name">Import Stages</field>
+        <field name="res_model">import.stage.template.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_project_id': active_id}</field>
+    </record>
+
+</odoo>
