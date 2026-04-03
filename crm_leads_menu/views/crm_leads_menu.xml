@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Action for Leads -->
+    <record id="action_crm_leads_only" model="ir.actions.act_window">
+        <field name="name">Leads</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">kanban,list,form,calendar,pivot,graph,activity</field>
+        <field name="domain">[('type', '=', 'lead')]</field>
+        <field name="context">{'default_type': 'lead'}</field>
+    </record>
+
+    <!-- Menu under CRM -->
+    <menuitem
+        id="crm_menu_leads_root"
+        name="Leads"
+        parent="crm.crm_menu_root"
+        action="action_crm_leads_only"
+        sequence="15"
+    />
+
+</odoo>
