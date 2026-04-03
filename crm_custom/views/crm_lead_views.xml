@@ -54,6 +54,28 @@
             </xpath>
         </field>
     </record>
+    <record id="crm_lead_view_kanban_inherit_hide_generate_leads" model="ir.ui.view">
+        <field name="name">crm.lead.view.kanban.inherit.hide.generate.leads</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_generate_leads']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lead_view_tree_leads_inherit_hide_generate_leads" model="ir.ui.view">
+        <field name="name">crm.lead.view.tree.leads.inherit.hide.generate_leads</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_generate_leads']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
     <record id="crm.crm_lead_action_pipeline" model="ir.actions.act_window">
         <field name="name">Opportunity</field>
         <field name="view_mode">list,kanban,calendar,pivot,graph,activity,form</field>
@@ -72,5 +94,18 @@
               parent="crm.crm_menu_sales"
               action="crm.crm_lead_action_pipeline"
               sequence="1"/>
-    <!-- Change Opportunity View Order -->
+
+    <menuitem id="crm.crm_menu_leads"
+              name="Leads"
+              parent="crm.crm_menu_root"
+              action="crm.crm_lead_all_leads"
+              sequence="2"
+              active="True"
+              groups="base.group_user"/>
+
+    <menuitem id="menu_daily_business_report_crm"
+              name="Daily Business Report"
+              parent="crm.crm_menu_root"
+              action="dashboard_today_period.dashboard_today_action"
+              sequence="3"/>
 </odoo>

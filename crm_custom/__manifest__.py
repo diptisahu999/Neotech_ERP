@@ -15,6 +15,7 @@
         'survey',
         'hr_attendance',
         'hr_holidays',
+        'dashboard_today_period',
     ],
     'data': [
         'security/crm_lead_followup_security.xml',
