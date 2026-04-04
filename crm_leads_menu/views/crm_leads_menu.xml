@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- Action for Leads -->
+    <!-- Kanban fix -->
+    <!-- When click on Kanban - New - open Lead form -->
+    <record id="crm_lead_kanban_inherit_leads" model="ir.ui.view">
+        <field name="name">crm.lead.kanban.inherit.leads</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="quick_create">false</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Leads Action -->
+    <!-- When click on CRM - beside Sales - Add Action for Leads -->
     <record id="action_crm_leads_only" model="ir.actions.act_window">
         <field name="name">Leads</field>
         <field name="res_model">crm.lead</field>
-        <field name="view_mode">kanban,list,form,calendar,pivot,graph,activity</field>
+        <field name="view_mode">list,kanban,form,calendar,pivot,graph,activity</field>
+        <field name="view_id" ref="crm.crm_case_tree_view_leads"/>
         <field name="domain">[('type', '=', 'lead')]</field>
-        <field name="context">{'default_type': 'lead'}</field>
+        <field name="context">{'default_type': 'lead', 'is_lead_view': True}</field>
     </record>
 
     <!-- Menu under CRM -->
@@ -18,5 +33,23 @@
         action="action_crm_leads_only"
         sequence="15"
     />
+
+    <!-- Add Product on Lead and Opportunity form -->
+    <record id="crm_lead_view_form_inherit_product" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.product</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Opportunity -->
+            <xpath expr="//group[field[@name='tag_ids']][1]/field[@name='tag_ids']" position="after">
+                <field name="product_id"/>
+            </xpath>
+
+            <!-- Lead -->
+            <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position="after">
+                <field name="product_id"/>
+            </xpath>
+        </field>
+    </record>
 
 </odoo>

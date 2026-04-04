@@ -6,7 +6,7 @@
     """,
     'author': 'Techvizor',
     'category': 'CRM',
-    'depends': ['crm'],
+    'depends': ['crm', 'sale'],
     'data': [
         'views/crm_leads_menu.xml',
     ],
