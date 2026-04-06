@@ -27,6 +27,18 @@ class CrmLead(models.Model):
 
         return action
 
+    def action_distribute_to_salespersons(self):
+        """Open the wizard to distribute this lead to 3–5 salespersons."""
+        return {
+            'name': 'Distribute Lead to Salespersons',
+            'type': 'ir.actions.act_window',
+            'res_model': 'crm.lead.distribute.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_lead_id': self.id},
+        }
+
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'

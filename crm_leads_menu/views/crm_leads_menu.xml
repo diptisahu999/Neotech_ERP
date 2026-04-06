@@ -103,6 +103,7 @@
         sequence="15"
     />
 
+
     <!-- Add Product on Lead and Opportunity form -->
     <record id="crm_lead_view_form_inherit_product" model="ir.ui.view">
         <field name="name">crm.lead.form.inherit.product</field>

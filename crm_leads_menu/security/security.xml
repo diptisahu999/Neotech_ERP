@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ===================== CUSTOM CRM GROUPS ===================== -->
+
+    <!-- Salesperson group: own records only -->
+    <record id="group_neotech_crm_salesperson" model="res.groups">
+        <field name="name">CRM Salesperson (Own Records Only)</field>
+        <field name="category_id" ref="base.module_category_sales_crm"/>
+    </record>
+
+    <!-- Manager group: all records — does NOT imply salesperson group -->
+    <record id="group_neotech_crm_manager" model="res.groups">
+        <field name="name">CRM Manager (All Records)</field>
+        <field name="category_id" ref="base.module_category_sales_crm"/>
+    </record>
+
+    <!-- ===================== RECORD RULES ===================== -->
+
+    <!--
+        RULE 1: Applied to group_neotech_crm_salesperson.
+        Salesperson sees ONLY leads where user_id = themselves.
+        Odoo ORs rules per group, so we also need RULE 2 to block
+        the 'All Documents' Sales group from bypassing isolation.
+    -->
+    <record id="crm_lead_rule_neotech_salesperson_isolation" model="ir.rule">
+        <field name="name">CRM Lead: Salesperson sees own records only</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('crm_leads_menu.group_neotech_crm_salesperson'))]"/>
+        <field name="perm_read"   eval="True"/>
+        <field name="perm_write"  eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!--
+        RULE 2: Override Odoo's permissive 'All Documents' rule.
+        If a user has our CRM Salesperson group AND the Sales 'All Documents'
+        group, this rule restricts them to own records within that group too.
+        This prevents the 'All Documents' group from ORing open access.
+    -->
+    <record id="crm_lead_rule_all_docs_salesperson_override" model="ir.rule">
+        <field name="name">CRM Lead: Block All-Documents bypass for CRM Salesperson</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman_all_leads'))]"/>
+        <field name="perm_read"   eval="True"/>
+        <field name="perm_write"  eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!--
+        RULE 3: For CRM Managers — they can see everything.
+        This explicitly opens ALL records for the manager group,
+        overriding Rule 2 for managers (Odoo ORs rules across groups).
+    -->
+    <record id="crm_lead_rule_neotech_manager_all" model="ir.rule">
+        <field name="name">CRM Lead: Manager sees all records</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('crm_leads_menu.group_neotech_crm_manager'))]"/>
+        <field name="perm_read"   eval="True"/>
+        <field name="perm_write"  eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>
+

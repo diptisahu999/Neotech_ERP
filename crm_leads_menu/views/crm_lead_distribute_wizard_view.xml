@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- =================== DISTRIBUTION WIZARD VIEW =================== -->
+    <record id="crm_lead_distribute_wizard_form" model="ir.ui.view">
+        <field name="name">crm.lead.distribute.wizard.form</field>
+        <field name="model">crm.lead.distribute.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Distribute Lead to Salespersons">
+                <group>
+                    <group string="Lead Information">
+                        <field name="lead_id" readonly="1"/>
+                        <field name="lead_name" readonly="1"/>
+                    </group>
+                    <group string="Assign To (3–5 Salespersons)">
+                        <field name="salesperson_ids"
+                               widget="many2many_tags"
+                               options="{'no_create': True}"
+                               required="1"
+                               nolabel="1"/>
+                    </group>
+                </group>
+                <group string="Internal Note">
+                    <field name="note"
+                           nolabel="1"
+                           placeholder="Optional note added to each lead copy..."/>
+                </group>
+                <div class="alert alert-info" role="alert">
+                    <i class="fa fa-info-circle me-1"/>
+                    Select <strong>3 to 5 salespersons</strong>. A separate lead copy will be
+                    created for each — they work independently and cannot see each other's records.
+                </div>
+                <footer>
+                    <button name="action_distribute"
+                            string="Distribute Lead"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_crm_lead_distribute_wizard" model="ir.actions.act_window">
+        <field name="name">Distribute Lead</field>
+        <field name="res_model">crm.lead.distribute.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_lead_id': active_id}</field>
+    </record>
+
+    <!-- "Distribute to Salespersons" button on crm.lead form
+         Uses type="object" to call Python method — avoids XML load-order issues -->
+    <record id="crm_lead_view_form_inherit_distribute" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.distribute</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Insert before the Won button (first button in the header) -->
+            <xpath expr="//header/button[@name='action_set_won_rainbowman']" position="before">
+                <button name="action_distribute_to_salespersons"
+                        string="Distribute to Salespersons"
+                        type="object"
+                        class="btn-secondary"
+                        groups="crm_leads_menu.group_neotech_crm_manager"
+                        title="Distribute this lead to 3–5 salespersons"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- =================== USER ROLE BUTTONS on res.users form =================== -->
+    <record id="view_res_users_form_crm_role_inherit" model="ir.ui.view">
+        <field name="name">res.users.form.crm.role.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add CRM Role buttons next to "Send Password Reset Instructions" -->
+            <xpath expr="//button[@name='action_reset_password']" position="after">
+                <!-- Set as Salesperson -->
+                <button name="action_set_crm_salesperson"
+                        string="Set CRM Salesperson"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="neotech_crm_role == 'salesperson'"
+                        title="Assign Own-Records-Only CRM role"/>
+                <!-- Set as Manager -->
+                <button name="action_set_crm_manager"
+                        string="Set CRM Manager"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="neotech_crm_role == 'manager'"
+                        title="Assign All-Records CRM Manager role"/>
+                <!-- Remove CRM Role -->
+                <button name="action_remove_crm_role"
+                        string="Remove CRM Role"
+                        type="object"
+                        class="btn-danger"
+                        invisible="neotech_crm_role == 'none'"
+                        title="Remove CRM role from this user"/>
+            </xpath>
+
+            <!-- Load the computed field into the form context (hidden) -->
+            <xpath expr="//sheet" position="inside">
+                <field name="neotech_crm_role" invisible="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
