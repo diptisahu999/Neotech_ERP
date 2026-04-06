@@ -14,6 +14,75 @@
         </field>
     </record>
 
+    <!-- Hide Generate Leads button in Opportunity List view (crm.crm_case_tree_view_oppor) -->
+    <record id="crm_hide_gen_leads_oppor_list" model="ir.ui.view">
+        <field name="name">crm.hide.gen.leads.oppor.list</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm_iap_mine.crm_lead_view_tree_opportunity"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_generate_leads']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hide Generate Leads button in Leads List view (crm.crm_case_tree_view_leads) -->
+    <record id="crm_hide_gen_leads_leads_list" model="ir.ui.view">
+        <field name="name">crm.hide.gen.leads.leads.list</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm_iap_mine.crm_lead_view_tree_lead"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_generate_leads']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hide Generate Leads button in Opportunity Kanban view -->
+    <record id="crm_hide_gen_leads_oppor_kanban" model="ir.ui.view">
+        <field name="name">crm.hide.gen.leads.oppor.kanban</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm_iap_mine.view_crm_lead_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_generate_leads']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hide Generate Leads button in Leads Kanban view -->
+    <record id="crm_hide_gen_leads_leads_kanban" model="ir.ui.view">
+        <field name="name">crm.hide.gen.leads.leads.kanban</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm_iap_mine.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_generate_leads']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Override CRM Pipeline action: rename to Opportunity, default to List view -->
+    <record id="crm.crm_lead_action_pipeline" model="ir.actions.act_window">
+        <field name="name">Opportunity</field>
+        <field name="view_mode">list,kanban,graph,pivot,form,calendar,activity</field>
+    </record>
+
+    <!-- Change kanban sequence to 1 so list (sequence=0) loads first -->
+    <record id="crm.crm_lead_action_pipeline_view_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+    </record>
+
+    <!-- Set list sequence to 0 so it loads as default -->
+    <record id="crm.crm_lead_action_pipeline_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+    </record>
+
+    <!-- Show Stages menu under Configuration > Pipeline (remove hidden group restriction) -->
+    <record id="crm.menu_crm_lead_stage_act" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+    </record>
+
     <!-- Leads Action -->
     <!-- When click on CRM - beside Sales - Add Action for Leads -->
     <record id="action_crm_leads_only" model="ir.actions.act_window">
