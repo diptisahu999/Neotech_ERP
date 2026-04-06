@@ -122,10 +122,10 @@
 
     <!-- Menu Item in CRM -->
     <!-- Menu Item in CRM (Promoted to Root for Default Opening) -->
-    <menuitem id="menu_crm_lead_followup_calendar"
+    <!-- <menuitem id="menu_crm_lead_followup_calendar"
               name="Follow Up Calendar"
               action="action_crm_lead_followup_calendar"
               sequence="1"
-              web_icon="survey,static/description/icon.png"/>
+              web_icon="survey,static/description/icon.png"/> -->
 
 </odoo>
