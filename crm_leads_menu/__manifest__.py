@@ -14,8 +14,9 @@
         'data/crm_stage_data.xml',
         'views/crm_leads_menu.xml',
         'views/crm_lead_distribute_wizard_view.xml',
+        'views/crm_lead_followup_view.xml',
         'views/res_users_view.xml',
     ],
     'installable': True,
     'application': False,
-}
+}
