@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_sale_terms_custom" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.sale_terms_custom</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_term_id" position="after">
+                <label for="terms_condition_id" string="Terms and Condition"/>
+                <div class="o_row">
+                    <field name="terms_condition_id" options="{'no_quick_create': True}" placeholder="Select Terms Template..."/>
+                    <button name="action_apply_terms" type="object" icon="fa-arrow-right" class="btn btn-link" title="Apply Terms" style="padding: 0;"/>
+                    <button name="%(sale_terms_custom.action_terms_and_conditions)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Terms" style="padding: 0;" target="new"/>
+                </div>
+                <field name="additional_notes"/>
+            </field>
+        </field>
+    </record>
+</odoo>
