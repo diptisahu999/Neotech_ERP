@@ -5,6 +5,10 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="partner_invoice_id" string="Invoice Address" context="{'default_type':'invoice'}" options='{"always_reload": True}'/>
+                <field name="partner_shipping_id" string="Delivery Address" context="{'default_type':'delivery'}" options='{"always_reload": True}'/>
+            </field>
             <field name="payment_term_id" position="after">
                 <label for="terms_condition_id" string="Terms and Condition"/>
                 <div class="o_row">
@@ -14,6 +18,16 @@
                 </div>
                 <field name="additional_notes"/>
             </field>
+
+            <!-- Override the Create Invoice buttons to perform availability check -->
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][1]" position="attributes">
+                <attribute name="name">action_open_create_invoice_wizard</attribute>
+                <attribute name="type">object</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d']" position="attributes">
+                <attribute name="name">action_open_create_invoice_wizard</attribute>
+                <attribute name="type">object</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
