@@ -7,9 +7,9 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Follow up" name="followup_page">
+                <page string="Follow up" name="followup_page" invisible="type == 'opportunity'">
                     <!-- Opportunity View: Readonly, No Create (Managed via Calendar) -->
-                    <field name="followup_ids" nolabel="1" readonly="1" invisible="type == 'lead'">
+                    <!-- <field name="followup_ids" nolabel="1" readonly="1" invisible="type == 'lead'">
                          <list create="false" delete="false" edit="false">
                             <field name="scheduled_date"/>
                             <field name="state" widget="badge" 
@@ -18,10 +18,10 @@
                             <field name="note"/>
                             <field name="create_date" string="Created On" widget="datetime" optional="hide"/>
                         </list>
-                    </field>
+                    </field> -->
 
                     <!-- Lead View: Editable, Create Allowed -->
-                    <field name="followup_ids" nolabel="1" invisible="type == 'opportunity'">
+                    <field name="followup_ids" nolabel="1">
                         <list editable="bottom" delete="false" create="true">
                             <field name="note" placeholder="Add a follow-up note"/>
                             <field name="create_date" string="Created On" widget="datetime" readonly="1" optional="hide"/>
