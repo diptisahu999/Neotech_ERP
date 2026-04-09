@@ -11,6 +11,14 @@
             <xpath expr="//field[@name='category_id']" position="attributes">
                 <attribute name="required">1</attribute>
             </xpath>
+            <!-- Hide Company Name field completely -->
+            <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Add Contact Name field to the right column -->
+            <xpath expr="//field[@name='function']" position="before">
+                <field name="person_name" string="Contact Name"/>
+            </xpath>
         </field>
     </record>
 
