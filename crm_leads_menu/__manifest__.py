@@ -11,7 +11,6 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
-        'data/crm_stage_data.xml',
         'views/crm_leads_menu.xml',
         'views/crm_lead_distribute_wizard_view.xml',
         'views/crm_lead_followup_view.xml',

@@ -66,6 +66,7 @@
                         type="object"
                         class="btn-secondary"
                         groups="crm_leads_menu.group_neotech_crm_manager"
+                        invisible="type == 'opportunity'"
                         title="Distribute this lead to 3–5 salespersons"/>
             </xpath>
         </field>
