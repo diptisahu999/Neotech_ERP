@@ -9,7 +9,12 @@
                 <field name="partner_invoice_id" string="Invoice Address" context="{'default_type':'invoice'}" options='{"always_reload": True}'/>
                 <field name="partner_shipping_id" string="Delivery Address" context="{'default_type':'delivery'}" options='{"always_reload": True}'/>
             </field>
-            <field name="payment_term_id" position="after">
+            <field name="payment_term_id" position="replace">
+                <label for="payment_term_id"/>
+                <div class="o_row">
+                    <field name="payment_term_id" options="{'no_quick_create': False}" placeholder="Select Payment Terms..."/>
+                    <button name="%(account.action_payment_term_form)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Payment Term" style="padding: 0;" target="new"/>
+                </div>
                 <label for="terms_condition_id" string="Terms and Condition"/>
                 <div class="o_row">
                     <field name="terms_condition_id" options="{'no_quick_create': True}" placeholder="Select Terms Template..."/>
