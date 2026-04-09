@@ -391,21 +391,7 @@
     </template>
 
     <!-- Quotation Report Action -->
-    <record id="action_unified_quotation" model="ir.actions.report">
-        <field name="name">Custom Quotation</field>
-        <field name="model">sale.order</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">sales_reports.report_unified_quotation</field>
-        <field name="report_file">sales_reports.report_unified_quotation</field>
-        <field name="binding_type">report</field>
-        <field name="binding_model_id" ref="sale.model_sale_order"/>
-        <field name="paperformat_id" ref="paperformat_no_space"/>
 
-        <!-- This sets the filename when downloading the PDF -->
-        <field name="print_report_name">
-            'Quotation - ' + (object.name or 'QUO') + ' - ' + (object.partner_id.name or 'Customer')
-        </field>
-    </record>
 
     <!-- Pro-Forma Report Action -->
     <record id="action_unified_proforma" model="ir.actions.report">

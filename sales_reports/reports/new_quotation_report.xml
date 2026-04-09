@@ -72,16 +72,16 @@
                                 </span>
                             </div>
 
-                            <!-- WATERMARK -->
-                            <div style="background: url('/invoice_report/static/src/img/watermark4.png') no-repeat center top; 
-                                    background-size: contain; width: 100%; min-height: 800px;">
-                                
-                                <div class="row d-flex align-items-stretch">
-                                   <table class="table mb-0"
-                                        style="width:100%;
-                                                border-collapse:collapse;
-                                                border:1px solid black;
-                                                table-layout:fixed;">
+                                    <!-- WATERMARK -->
+                                <div style="background: url('/sales_reports/static/src/img/watermark4.png') no-repeat center top; 
+                                        background-size: contain; width: 100%; min-height: 800px;">
+                                    
+                                    <div style="width: 100%;">
+                                       <table class="table mb-0"
+                                            style="width:100%;
+                                                    border-collapse:collapse;
+                                                    border:1px solid black;
+                                                    table-layout:fixed;">
 
                                         <!-- ================= TOP ROW ================= -->
                                         <tr>
@@ -339,7 +339,7 @@
                                         <div><span>For NeoTech Water Solution Pvt Ltd</span> </div>
                                         <div style="text-align: end; height: 120px;">
                                             <img class="object-fit-cover" 
-                                                    src="/invoice_report/static/src/img/stamp.png" 
+                                                    t-att-src="'/sales_reports/static/src/img/stamp.png'" 
                                                     height="100" width="100" alt="stamp" />
                                         </div>
                                         <div style="height: 30px;"><span style="border-bottom: 1px solid;">Authorized Signatory</span></div>
