@@ -12,11 +12,15 @@ class SaleOrder(models.Model):
     def _onchange_terms_condition_id(self):
         if self.terms_condition_id:
             self.note = self.terms_condition_id.terms_condition
+        else:
+            self.note = False   # 🔥 CLEAR the bottom note
 
     def action_apply_terms(self):
         for record in self:
             if record.terms_condition_id:
                 record.note = record.terms_condition_id.terms_condition
+            else:
+                record.note = False
 
     def _create_invoices(self, grouped=False, final=False, date=None):
         for order in self:

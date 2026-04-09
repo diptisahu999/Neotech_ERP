@@ -149,7 +149,7 @@
                     <div class="col-12">
                         <table class="mb-0 table avoid-page-break-inside" style="font-size: 14px; border-width: 0px 1px 1px 1px;border-style:solid; border-color:black;">
                             <thead class="bg-aqua">
-                                <tr style="line-height: 1.2; letter-spacing: 1px; " class="align-items-top bg-warning text-dark ">
+                                <tr style="background: rgba(79,177,237,0.20); line-height: 1.2; letter-spacing: 1px; " class="align-items-top text-dark ">
                                     <th name="th_sequence" class="text-center text-dark" style="width: 3%; border-right: 1px solid #000; border-bottom: 1px solid #000;">#</th>
                                     <th name="th_item" class="px-2 text-dark" style="width: 35%; font-weight: bold; border-right: 1px solid #000; border-bottom: 1px solid #000;">Item</th>
                                     <th name="th_hsn" class="text-center text-dark" style="font-weight: bold; border-right: 1px solid #000; border-bottom: 1px solid #000;">HSN Code</th>
@@ -207,7 +207,6 @@
                         </table>
                     </div>
                 </div>
-
                 <!-- Show total quantity here -->
                 <!-- Total Section -->
                 <div class="row" style="border-width: 0px 1px 1px 1px;border-style:solid; border-color:black;">
@@ -233,25 +232,25 @@
                                         <tr class="mb-2 ml-2">
                                             <td class="text-muted">Bank:</td>
                                             <td style="padding-left: 20px;">
-                                                <span>YES BANK LIMITED, SURAT</span>
+                                                <span>BANK NAME</span>
                                             </td>
                                         </tr>
                                         <tr class="mb-4 ml-2">
                                             <td class="text-muted">Account #:</td>
                                             <td style="padding-left: 20px;">
-                                                <span>084184600004775</span>
+                                                <span>*************</span>
                                             </td>
                                         </tr>
                                         <tr class="mb-4 ml-2">
                                             <td class="text-muted">IFSC Code:</td>
                                             <td style="padding-left: 20px;">
-                                                <span>YESB0000841</span>
+                                                <span>*************</span>
                                             </td>
                                         </tr>
                                         <tr class="mb-4 ml-2">
                                             <td class="text-muted">Branch:</td>
                                             <td style="padding-left: 20px;">
-                                                <span>RING ROAD BRANCH</span>
+                                                <span>*************</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -261,7 +260,7 @@
                     </div>
                     <div class="col-6 py-2">
                         <div class="totals-section d-flex flex-column align-items-end justify-content-between" style="width: 100%; height: 100%; font-size: 16px; justify-content: flex-end !important; ">
-                            <div class="totals-row bg-warning" style="display: flex;align-items: center; justify-content: space-between;justify-content-end; padding: 4px 0; border-bottom: 1px solid #000;">
+                            <div class="totals-row" style="background: rgba(79,177,237,0.20); display: flex;align-items: center; justify-content: space-between;justify-content-end; padding: 4px 0; border-bottom: 1px solid #000;">
                                 <span class="px-2 text-dark font-weight-bold" style="font-size: 15px; font-weight: bold;margin-right: 20px;">Untaxed Amount </span>
                                 <span class="px-2 text-dark font-weight-bold" t-field="doc.amount_untaxed" style="font-size: 15px; font-weight: bold;"/>
                             </div>
@@ -305,7 +304,7 @@
                                     <span class="px-2" t-esc="igst" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
                                 </div>
                             </t>
-                            <div class="totals-row justify-content-end bg-warning" style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 16px; font-weight: bold; border-bottom: 1px solid #000;">
+                            <div class="totals-row justify-content-end" style="background: rgba(79,177,237,0.20); display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 16px; font-weight: bold; border-bottom: 1px solid #000;">
                                 <span class="px-2 mr-2 text-dark" style="margin-right: 24px; font-weight: bold; font-size: 17px;">Total</span>
                                 <span class="px-2 text-dark" t-field="doc.amount_total" style=" font-weight: bold; font-size: 17px;"/>
                             </div>
@@ -313,10 +312,10 @@
                     </div>
                 </div>
                 <!-- Signature Section -->
-                <!-- <div class="row" style="border-width: 0px 1px 1px 1px;border-style:solid; border-color:black; page-break-inside: avoid; break-inside: avoid;">
+                <div class="row" style="border-width: 0px 1px 1px 1px;border-style:solid; border-color:black; page-break-inside: avoid; break-inside: avoid;">
                     <div class="text-end px-2">
                         <div>
-                            <span>For R V ENTERPRISE</span>
+                            <span>For NeoTech Water Solution Pvt Ltd</span>
                         </div>
                         <div style="text-align: end; height: 120px;">
                             <img class="object-fit-cover" src="/sales_reports/static/src/img/stamp.png" height="100" width="100" alt="stamp" />
@@ -325,7 +324,7 @@
                             <span style="border-bottom: 1px solid;">Authorized Signatory</span>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- <br/> -->
                 <!-- <br/> -->
                 <t t-if="doc.has_additional_notes">
