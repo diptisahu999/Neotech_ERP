@@ -1,7 +1,7 @@
 {
     "name": "Sale Custom Terms Button",
     "version": "1.0.0",
-    "author": "Antigravity",
+    "author": "Techvizor",
     "depends": ["sale", "sale_management", "sale_stock"],
     "data": [
         "security/ir.model.access.csv",
