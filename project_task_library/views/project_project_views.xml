@@ -20,9 +20,38 @@
     <record id="project_project_view_list_inherit_progress" model="ir.ui.view">
         <field name="name">project.project.list.inherit.progress</field>
         <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="salesperson_id" string="Salesperson"/>
+                <field name="order_date" string="Order Date"/>
+                <field name="commitment_date" string="Delivery Date"/>
+                <field name="amount_total" string="Order Value" widget="monetary"/>
+                <field name="x_project_progress" widget="progressbar" string="Progress"
+                    decoration-danger="x_project_progress &lt; 30"
+                    decoration-warning="x_project_progress &gt;= 30 and x_project_progress &lt; 60"
+                    decoration-info="x_project_progress &gt;= 60 and x_project_progress &lt; 80"
+                    decoration-success="x_project_progress &gt;= 80"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_project_view_list_inherit_progress_group" model="ir.ui.view">
+        <field name="name">project.project.list.inherit.progress.group</field>
+        <field name="model">project.project</field>
         <field name="inherit_id" ref="project.project_list_view_group_stage"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
             <xpath expr="//field[@name='user_id']" position="after">
+                <field name="salesperson_id" string="Salesperson"/>
+                <field name="order_date" string="Order Date"/>
+                <field name="commitment_date" string="Delivery Date"/>
+                <field name="amount_total" string="Order Value" widget="monetary"/>
                 <field name="x_project_progress" widget="progressbar" string="Progress"
                     decoration-danger="x_project_progress &lt; 30"
                     decoration-warning="x_project_progress &gt;= 30 and x_project_progress &lt; 60"
@@ -39,6 +68,7 @@
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='label_tasks']" position="after">
+                <field name="x_sale_order_id" readonly="1" string="Sale Order"/>
                 <field name="partner_id" string="Customer" readonly="1"/>
                 <field name="salesperson_id" string="Salesperson"/>
                 <field name="amount_total" widget="monetary"/>
@@ -46,6 +76,34 @@
                 <field name="commitment_date" string="Delivery Date"/>
             </xpath>
         </field>
+    </record>
+
+    <!-- Added search view inheritance for Salesperson and Customer -->
+    <record id="view_project_project_filter_inherit_sales" model="ir.ui.view">
+        <field name="name">project.project.select.inherit.sales</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='Manager']" position="after">
+                <filter string="Salesperson" name="salesperson" context="{'group_by': 'salesperson_id'}"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="salesperson_id"/>
+                <field name="order_date"/>
+                <field name="amount_total"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Set List View as Default for Projects -->
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="view_mode">list,kanban,form</field>
+        <field name="view_id" ref="project.view_project"/>
+    </record>
+
+    <record id="project.open_view_project_all_group_stage" model="ir.actions.act_window">
+        <field name="view_mode">list,kanban,form,calendar,activity</field>
+        <field name="view_id" ref="project.project_list_view_group_stage"/>
     </record>
 
 </odoo>

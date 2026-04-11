@@ -24,12 +24,7 @@ class SaleOrder(models.Model):
         # Otherwise, create a new project
         project = self.env['project.project'].create({
             'name': f"{self.name} - {self.partner_id.name}",
-            'sale_order_id': self.id,
-            'partner_id': self.partner_id.id,
-            'commitment_date': self.commitment_date,
-            'salesperson_id': self.user_id.id,
-            'amount_total': self.amount_total,
-            'order_date': self.date_order,
+            'x_sale_order_id': self.id,
         })
         self.project_id = project
 

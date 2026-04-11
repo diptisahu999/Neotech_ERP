@@ -10,13 +10,13 @@ class ProjectProject(models.Model):
     )
 
     # From Sale Order / Quotation
-    sale_order_id = fields.Many2one('sale.order', string="Sale Order")
-    partner_id = fields.Many2one('res.partner', string="Customer")
-    salesperson_id = fields.Many2one('res.users', string="Salesperson", store=True, readonly=True)
-    amount_total = fields.Monetary(string="Order Value", store=True, readonly=True, currency_field='currency_id')
-    currency_id = fields.Many2one('res.currency', store=True, readonly=True)
-    order_date = fields.Datetime(string="Order Date", store=True, readonly=True)
-    commitment_date = fields.Datetime(string="Delivery Date", store=True, readonly=True)
+    x_sale_order_id = fields.Many2one('sale.order', string="Sale Order")
+    partner_id = fields.Many2one('res.partner', string="Customer", related='x_sale_order_id.partner_id', readonly=True)
+    salesperson_id = fields.Many2one('res.users', string="Salesperson", related='x_sale_order_id.user_id', readonly=True)
+    amount_total = fields.Monetary(string="Order Value", related='x_sale_order_id.amount_total', readonly=True, currency_field='currency_id')
+    currency_id = fields.Many2one('res.currency', related='x_sale_order_id.currency_id', readonly=True)
+    order_date = fields.Datetime(string="Order Date", related='x_sale_order_id.date_order', readonly=True)
+    commitment_date = fields.Datetime(string="Delivery Date", related='x_sale_order_id.commitment_date', readonly=True)
 
 
     @api.depends('tasks.is_closed', 'tasks.subtask_completion_percentage', 'tasks.parent_id')
