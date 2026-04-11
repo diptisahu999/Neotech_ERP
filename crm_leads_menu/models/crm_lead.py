@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
@@ -59,3 +59,17 @@ class SaleOrder(models.Model):
                 })]
 
         return vals
+    
+   
+# set the default 'convert to opportunity' When open wizard on lead form view
+class CrmLead2OpportunityPartner(models.TransientModel):
+    _inherit = 'crm.lead2opportunity.partner'
+
+    @api.model
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
+
+        # ✅ Correct field + correct value
+        res['name'] = 'convert'
+
+        return res
