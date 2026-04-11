@@ -31,4 +31,21 @@
             </xpath>
         </field>
     </record>
+
+    <!-- Added new fields Get from SO -->
+    <record id="project_project_view_form_inherit_customer" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.customer</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='label_tasks']" position="after">
+                <field name="partner_id" string="Customer" readonly="1"/>
+                <field name="salesperson_id" string="Salesperson"/>
+                <field name="amount_total" widget="monetary"/>
+                <field name="order_date" string="Order Date"/>
+                <field name="commitment_date" string="Delivery Date"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

@@ -9,6 +9,16 @@ class ProjectProject(models.Model):
         help="Calculates progress based on top-level tasks and their sub-tasks completion."
     )
 
+    # From Sale Order / Quotation
+    sale_order_id = fields.Many2one('sale.order', string="Sale Order")
+    partner_id = fields.Many2one('res.partner', string="Customer")
+    salesperson_id = fields.Many2one('res.users', string="Salesperson", store=True, readonly=True)
+    amount_total = fields.Monetary(string="Order Value", store=True, readonly=True, currency_field='currency_id')
+    currency_id = fields.Many2one('res.currency', store=True, readonly=True)
+    order_date = fields.Datetime(string="Order Date", store=True, readonly=True)
+    commitment_date = fields.Datetime(string="Delivery Date", store=True, readonly=True)
+
+
     @api.depends('tasks.is_closed', 'tasks.subtask_completion_percentage', 'tasks.parent_id')
     def _compute_x_project_progress(self):
         for project in self:
