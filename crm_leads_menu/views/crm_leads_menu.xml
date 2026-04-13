@@ -119,6 +119,16 @@
             <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position="after">
                 <field name="product_id"/>
             </xpath>
+
+            <!-- ✅ Lead -> Add below Sales Team -->
+            <xpath expr="//group[field[@name='team_id']]" position="inside">
+                <field name="source_id"/>
+            </xpath>
+
+            <!-- ✅ Opportunity -> Add below Phone -->
+            <xpath expr="//group[@name='opportunity_partner']//div[field[@name='phone']]" position="after">
+                <field name="source_id"/>
+            </xpath>
         </field>
     </record>
 
