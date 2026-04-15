@@ -17,8 +17,8 @@
         'mail'
     ],
     'data': [
-        'security/groups.xml',
         'views/hide_apps_module.xml',
+        'security/groups.xml',
         'views/hide_employee_menu.xml',
     ],
     'installable': True,
