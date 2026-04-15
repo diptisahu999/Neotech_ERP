@@ -6,6 +6,8 @@
             - Hide Employee menu for all users
             - Hide Link Tracker menu for all users
             - Hide Create Employee Button from Users under Settings for all users
+            - Employee module access permission for specific users added in Settings
+            - Hide Apps menu for all users permission added in Settings
     """,
     'category': 'Hidden',
     'author': 'Techvizor',
@@ -16,6 +18,7 @@
     ],
     'data': [
         'security/groups.xml',
+        'views/hide_apps_module.xml',
         'views/hide_employee_menu.xml',
     ],
     'installable': True,
