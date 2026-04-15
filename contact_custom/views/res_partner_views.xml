@@ -15,9 +15,10 @@
             <xpath expr="//field[@name='parent_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <!-- Add Contact Name field to the right column -->
+            <!-- Add Contact Name and Creator fields to the right column -->
             <xpath expr="//field[@name='function']" position="before">
                 <field name="person_name" string="Contact Name"/>
+                <field name="created_by_id" string="Created By" readonly="1"/>
             </xpath>
         </field>
     </record>
@@ -29,5 +30,19 @@
 
     <record id="base.action_partner_form" model="ir.actions.act_window">
         <field name="domain">[('parent_id', '=', False)]</field>
+    </record>
+
+    <!-- Add Created By as a Group By option in the search view -->
+    <record id="view_res_partner_filter_inherit_contact_custom_groupby" model="ir.ui.view">
+        <field name="name">res.partner.view.search.inherit.contact_custom.groupby</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='supplier']" position="after">
+                <separator/>
+                <filter string="Created By" name="groupby_created_by" context="{'group_by':'create_uid'}"/>
+                <separator/>
+            </xpath>
+        </field>
     </record>
 </odoo>
