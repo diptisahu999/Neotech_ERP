@@ -18,7 +18,7 @@
             <!-- Add Contact Name and Creator fields to the right column -->
             <xpath expr="//field[@name='function']" position="before">
                 <field name="person_name" string="Contact Name"/>
-                <field name="created_by_id" string="Created By" readonly="1"/>
+                <!-- <field name="created_by_id" string="Created By" readonly="1"/> -->
             </xpath>
         </field>
     </record>
