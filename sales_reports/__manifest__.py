@@ -1,7 +1,7 @@
 {
     "name": "Sales Reports",
     "version": "1.0",
-    "depends": ["sale"],
+    "depends": ["sale", "mail"],
     "data": [
         "data/report_paperformat_data.xml",
         "reports/custom_quotation_report.xml",
