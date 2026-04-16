@@ -8,7 +8,7 @@
         - Makes Phone field required for both Individual and Company.
         - Makes Tags field required for both Individual and Company.
     """,
-    'depends': ['base', 'contacts', 'crm'],
+    'depends': ['base', 'contacts', 'crm', 'sale'],
     'data': [
         'views/res_partner_views.xml',
         'views/crm_lead_views.xml',
