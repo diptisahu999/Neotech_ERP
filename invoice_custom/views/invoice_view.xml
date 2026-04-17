@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_move_form_inherit_project" model="ir.ui.view">
+        <field name="name">account.move.form.project.gst.correct</field>
+        <field name="model">account.move</field>
+
+        <!-- IMPORTANT: inherit GST view, NOT base view -->
+        <field name="inherit_id" ref="l10n_in.invoice_form_inherit_l10n_in"/>
+
+        <field name="arch" type="xml">
+
+            <!-- Place exactly after GST -->
+            <xpath expr="//field[@name='l10n_in_gst_treatment']" position="after">
+                <field name="project_id" string="Project"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
