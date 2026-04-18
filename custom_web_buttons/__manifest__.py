@@ -7,9 +7,11 @@
         This module overrides the Odoo 18 Form Status Indicator to use text-based 
         Save and Discard buttons instead of icons, matching the classic Odoo style.
     """,
-    'author': 'Antigravity',
-    'depends': ['web'],
-    'data': [],
+    'author': 'Techvizor',
+    'depends': ['web', 'sale'],
+    'data': [
+        'views/sale_order_views.xml',
+    ],
     'assets': {
         'web.assets_backend': [
             'custom_web_buttons/static/src/views/form/form_status_indicator/form_status_indicator.xml',

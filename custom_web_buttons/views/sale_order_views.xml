@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_reorder_buttons" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.reorder.buttons</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Move Preview button before Confirm (sent) button -->
+            <xpath expr="//button[@id='action_confirm']" position="before">
+                <xpath expr="//button[@name='action_preview_sale_order']" position="move"/>
+            </xpath>
+            <!-- Ensure it also appears before the other Confirm button if id search is too specific, 
+                 but in Odoo 18, moving it once in the header is usually enough. -->
+        </field>
+    </record>
+</odoo>
