@@ -24,8 +24,8 @@ by clicking the "Add from Library" button inside the project form view.
         'views/task_library_wizard_views.xml',
         'views/project_project_views.xml',
         'views/project_task_views.xml',
-        # 'views/sale_order_views.xml',
-        'views/sale_order_actions.xml',
+        'views/sale_order_views.xml',
+        # 'views/sale_order_actions.xml',
     ],
     'assets': {
         'web.assets_backend': [
