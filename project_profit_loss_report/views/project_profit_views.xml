@@ -1,0 +1,79 @@
+<odoo>
+
+    <!-- INHERIT EXISTING SEARCH VIEW -->
+    <record id="view_project_profit_search_inherit" model="ir.ui.view">
+        <field name="name">project.profit.search.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+
+            <!-- Add filters AFTER existing ones -->
+            <xpath expr="//search" position="inside">
+
+                <!-- Custom Filters -->
+                <filter name="my_projects"
+                        string="My Projects"
+                        domain="[('user_id', '=', uid)]"/>
+
+                <!-- <filter name="profit_positive"
+                        string="Profit"
+                        domain="[('profit', '&gt;', 0)]"/>
+
+                <filter name="loss"
+                        string="Loss"
+                        domain="[('profit', '&lt;', 0)]"/> -->
+
+                <!-- Group By -->
+                <group expand="0" string="Profit Analysis">
+                    <filter name="group_project_manager"
+                            string="Project Manager"
+                            context="{'group_by': 'user_id'}"/>
+                </group>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- LIST VIEW -->
+    <record id="view_project_profit_list" model="ir.ui.view">
+        <field name="name">project.profit.list</field>
+        <field name="model">project.project</field>
+        <field name="priority">99</field> 
+        <field name="arch" type="xml">
+            <list string="Project Profit &amp; Loss">
+                <field name="name"/>
+                <field name="revenue" width="100"/>
+                <!-- <field name="material_cost" width="100"/> -->
+                <field name="purchase_cost" width="100"/>
+                <field name="total_cost" width="100"/>
+                <field name="profit" width="100"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_project_profit_form" model="ir.ui.view">
+        <field name="name">project.profit.form</field>
+        <field name="model">project.project</field>
+        <field name="priority">99</field> 
+        <field name="arch" type="xml">
+            <form string="Project Profit">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+
+                    <group string="Profit Analysis">
+                        <field name="revenue"/>
+                        <!-- <field name="material_cost"/> -->
+                        <field name="purchase_cost"/>
+                        <field name="total_cost"/>
+                        <field name="profit"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

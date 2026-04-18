@@ -7,7 +7,7 @@
             the project information is automatically transferred to the invoice. 
             This allows for better tracking and management of projects through the invoicing process.  
     """,
-    'depends': ['sale', 'account', 'project'],
+    'depends': ['sale', 'account', 'project', 'purchase'],
     'data': [
         "views/invoice_view.xml",
     ],
