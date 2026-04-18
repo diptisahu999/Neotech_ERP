@@ -129,6 +129,16 @@
             <xpath expr="//group[@name='opportunity_partner']//div[field[@name='phone']]" position="after">
                 <field name="source_id"/>
             </xpath>
+
+            <!-- Hide Enrich Button -->
+            <xpath expr="//button[@name='iap_enrich']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Hide Company Name Field -->
+            <xpath expr="//field[@name='partner_name']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
 
