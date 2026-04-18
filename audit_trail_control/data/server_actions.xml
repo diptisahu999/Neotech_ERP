@@ -79,4 +79,32 @@ if records:
     env.cr.execute("DELETE FROM account_move_line WHERE id IN %s", (line_ids,))
         </field>
     </record>
+    <!-- Force Delete Purchase Order (purchase.order) -->
+    <record id="action_force_delete_purchase_order" model="ir.actions.server">
+        <field name="name">Force Delete Purchase Order</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="groups_id" eval="[(6, 0, [ref('audit_trail_control.group_audit_trail_manager')])]"/>
+        <field name="state">code</field>
+        <field name="code">
+# WARNING: This bypasses all purchase and stock constraints
+if records:
+    po_ids = tuple(records.ids)
+    
+    # 1. Delete purchase order lines FIRST
+    env.cr.execute("DELETE FROM purchase_order_line WHERE order_id IN %s", (po_ids,))
+    
+    # 2. Delete mail messages (chatter/audit trail)
+    env.cr.execute("DELETE FROM mail_message WHERE model = 'purchase.order' AND res_id IN %s", (po_ids,))
+    
+    # 3. Delete mail followers
+    env.cr.execute("DELETE FROM mail_followers WHERE res_model = 'purchase.order' AND res_id IN %s", (po_ids,))
+    
+    # 4. Delete activity records
+    env.cr.execute("DELETE FROM mail_activity WHERE res_model = 'purchase.order' AND res_id IN %s", (po_ids,))
+    
+    # 5. Delete the purchase orders themselves
+    env.cr.execute("DELETE FROM purchase_order WHERE id IN %s", (po_ids,))
+        </field>
+    </record>
 </odoo>

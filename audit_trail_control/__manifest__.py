@@ -14,7 +14,7 @@
         ⚠️ WARNING: Use only for removing test/erroneous data. This breaks audit trail integrity.
     """,
     'author': 'Antigravity',
-    'depends': ['mail', 'account'],
+    'depends': ['mail', 'account', 'purchase'],
     'data': [
         'security/security_data.xml',
         'data/server_actions.xml',
