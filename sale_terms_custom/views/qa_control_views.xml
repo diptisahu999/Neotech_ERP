@@ -1,0 +1,28 @@
+<odoo>
+
+    <!-- LIST VIEW (Editable Like Chart of Accounts) -->
+    <record id="view_qa_control_list" model="ir.ui.view">
+        <field name="name">qa.control.list</field>
+        <field name="model">qa.control</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_qa_control" model="ir.actions.act_window">
+        <field name="name">Quality Assurance Control</field>
+        <field name="res_model">qa.control</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="menu_qa_control"
+              name="QA Control"
+              parent="sale.product_menu_catalog"
+              action="action_qa_control"
+              sequence="40"/>
+
+</odoo>
