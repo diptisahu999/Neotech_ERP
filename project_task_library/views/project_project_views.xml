@@ -26,11 +26,14 @@
                 <attribute name="column_invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="after">
-                <field name="salesperson_id" string="Salesperson"/>
-                <field name="order_date" string="Order Date"/>
-                <field name="commitment_date" string="Delivery Date"/>
-                <field name="amount_total" string="Order Value" widget="monetary"/>
-                <field name="x_project_progress" widget="progressbar" string="Progress"
+                <field name="salesperson_id" string="Salesperson" optional="show"/>
+                <field name="order_date" string="Order Date" optional="show"/>
+                <field name="commitment_date" string="Delivery Date" decoration-danger="x_is_late" decoration-warning="x_is_today and not x_is_late" optional="show"/>
+                <field name="x_remaining_days" widget="remaining_days" decoration-danger="x_is_late" decoration-warning="x_is_today and not x_is_late" string="Due Day" optional="show"/>
+                <field name="x_is_late" column_invisible="True"/>
+                <field name="x_is_today" column_invisible="True"/>
+                <field name="amount_total" string="Order Value" widget="monetary" optional="show"/>
+                <field name="x_project_progress" widget="progressbar" string="Progress" optional="show"
                     decoration-danger="x_project_progress &lt; 30"
                     decoration-warning="x_project_progress &gt;= 30 and x_project_progress &lt; 60"
                     decoration-info="x_project_progress &gt;= 60 and x_project_progress &lt; 80"
@@ -48,11 +51,14 @@
                 <attribute name="column_invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="after">
-                <field name="salesperson_id" string="Salesperson"/>
-                <field name="order_date" string="Order Date"/>
-                <field name="commitment_date" string="Delivery Date"/>
-                <field name="amount_total" string="Order Value" widget="monetary"/>
-                <field name="x_project_progress" widget="progressbar" string="Progress"
+                <field name="salesperson_id" string="Salesperson" optional="show"/>
+                <field name="order_date" string="Order Date" optional="show"/>
+                <field name="commitment_date" string="Delivery Date" decoration-danger="x_is_late" decoration-warning="x_is_today and not x_is_late" optional="show"/>
+                <field name="x_remaining_days" widget="remaining_days" decoration-danger="x_is_late" decoration-warning="x_is_today and not x_is_late" string="Due Day" optional="show"/>
+                <field name="x_is_late" column_invisible="True"/>
+                <field name="x_is_today" column_invisible="True"/>
+                <field name="amount_total" string="Order Value" widget="monetary" optional="show"/>
+                <field name="x_project_progress" widget="progressbar" string="Progress" optional="show"
                     decoration-danger="x_project_progress &lt; 30"
                     decoration-warning="x_project_progress &gt;= 30 and x_project_progress &lt; 60"
                     decoration-info="x_project_progress &gt;= 60 and x_project_progress &lt; 80"
@@ -64,7 +70,7 @@
     <!-- Added new fields Get from SO -->
     <record id="project_project_view_form_inherit_customer" model="ir.ui.view">
         <field name="name">project.project.form.inherit.customer</field>
-        <field name="model">project.project</field>
+        <field name="model" >project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='label_tasks']" position="after">
@@ -73,7 +79,10 @@
                 <field name="salesperson_id" string="Salesperson"/>
                 <field name="amount_total" widget="monetary"/>
                 <field name="order_date" string="Order Date"/>
-                <field name="commitment_date" string="Delivery Date"/>
+                <field name="commitment_date" string="Delivery Date" decoration-danger="x_is_late" decoration-warning="x_is_today and not x_is_late"/>
+                <field name="x_remaining_days" widget="remaining_days" decoration-danger="x_is_late" decoration-warning="x_is_today and not x_is_late" string="Due Day"/>
+                <field name="x_is_late" invisible="1"/>
+                <field name="x_is_today" invisible="1"/>
             </xpath>
         </field>
     </record>
@@ -90,6 +99,8 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="salesperson_id"/>
                 <field name="order_date"/>
+                <field name="commitment_date"/>
+                <field name="x_remaining_days"/>
                 <field name="amount_total"/>
             </xpath>
         </field>

@@ -17,6 +17,30 @@ class ProjectProject(models.Model):
     currency_id = fields.Many2one('res.currency', related='x_sale_order_id.currency_id', readonly=True)
     order_date = fields.Datetime(string="Order Date", related='x_sale_order_id.date_order', readonly=True)
     commitment_date = fields.Datetime(string="Delivery Date", related='x_sale_order_id.commitment_date', readonly=True)
+    x_is_late = fields.Boolean(compute='_compute_x_is_late', string="Is Late")
+    x_remaining_days = fields.Datetime(related='commitment_date', string="Due Day")
+    x_is_today = fields.Boolean(compute='_compute_x_is_today')
+
+    @api.depends('commitment_date')
+    def _compute_x_is_today(self):
+        today = fields.Date.context_today(self)
+        for project in self:
+            project.x_is_today = project.commitment_date and project.commitment_date.date() == today
+
+    @api.depends('commitment_date', 'x_sale_order_id.delivery_status')
+    def _compute_x_is_late(self):
+        now = fields.Datetime.now()
+        for project in self:
+            is_late = False
+            if project.commitment_date and project.commitment_date < now:
+                # If there's a sale order, check its delivery status.
+                # If no sale order, we just compare the date.
+                if project.x_sale_order_id:
+                    if project.x_sale_order_id.delivery_status != 'full':
+                        is_late = True
+                else:
+                    is_late = True
+            project.x_is_late = is_late
 
 
     @api.depends('tasks.is_closed', 'tasks.subtask_completion_percentage', 'tasks.parent_id')

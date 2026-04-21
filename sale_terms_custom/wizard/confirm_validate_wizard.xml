@@ -1,0 +1,31 @@
+<odoo>
+
+    <!-- Confirmation popup before Validate on Delivery Order -->
+    <record id="view_confirm_validate_wizard" model="ir.ui.view">
+        <field name="name">confirm.validate.wizard.form</field>
+        <field name="model">confirm.validate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirmation">
+                <group>
+                    <div class="o_form_label">
+                        Are you sure you want to validate this delivery?
+                        <br/>
+                        This action will update stock quantities and cannot be undone.
+                    </div>
+                </group>
+
+                <footer>
+                    <button name="action_confirm"
+                            type="object"
+                            string="Yes"
+                            class="btn-primary"/>
+
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

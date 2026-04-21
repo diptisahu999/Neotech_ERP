@@ -4,11 +4,11 @@
     'category': 'Services/Project',
     'summary': 'Add tasks to existing projects from a pre-defined library.',
     'description': """
-This module allows you to create a library of task templates
-with associated sub-task templates.
-
-You can then add tasks from your library to any existing project
-by clicking the "Add from Library" button inside the project form view.
+        1. This module allows you to create a library of task templates with associated sub-task templates.
+            You can then add tasks from your library to any existing project by clicking the "Add from Library" button inside the project form view.
+        2. Delivery Done status for Project (Due days).
+        3. Added Create project button in sale order outer Header.
+        4. Create Project --> Validation for at least one product in order line and no delivery done.
     """,
     'author': 'Pratham',
     'depends': [

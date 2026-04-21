@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_sale_order_form_documents" model="ir.ui.view">
+        <field name="name">sale.order.form.documents</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add New Tab -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Documents">
+                    <group>
+                        <field name="document_file" filename="document_filename"/>
+                        <field name="document_filename" invisible="1"/>
+                        <field name="document_position"/>
+                    </group>
+                    <group>
+                        <button name="action_remove_document"
+                                type="object"
+                                string="Remove Document"
+                                class="btn-danger"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
