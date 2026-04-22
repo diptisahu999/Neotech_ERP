@@ -4,3 +4,5 @@ access_project_task_template_user,project.task.template.user,model_project_task_
 access_project_subtask_template_manager,project.subtask.template.manager,model_project_subtask_template,project.group_project_manager,1,1,1,1
 access_project_subtask_template_user,project.subtask.template.user,model_project_subtask_template,project.group_project_user,1,0,0,0
 access_task_library_wizard,task.library.wizard,model_task_library_wizard,project.group_project_user,1,1,1,1
+access_qa_control_wizard,qa.control.wizard,model_qa_control_wizard,base.group_user,1,1,1,1
+access_project_qa_line_user,project.qa.line.user,model_project_qa_line,base.group_user,1,1,1,1

@@ -11,7 +11,7 @@ class ProjectProject(models.Model):
 
     # From Sale Order / Quotation
     x_sale_order_id = fields.Many2one('sale.order', string="Sale Order")
-    partner_id = fields.Many2one('res.partner', string="Customer", related='x_sale_order_id.partner_id', readonly=True)
+    partner_id = fields.Many2one('res.partner', string="Customer", related='x_sale_order_id.partner_id', readonly=True, ondelete='cascade')
     salesperson_id = fields.Many2one('res.users', string="Salesperson", related='x_sale_order_id.user_id', readonly=True)
     amount_total = fields.Monetary(string="Order Value", related='x_sale_order_id.amount_total', readonly=True, currency_field='currency_id')
     currency_id = fields.Many2one('res.currency', related='x_sale_order_id.currency_id', readonly=True)
@@ -20,6 +20,7 @@ class ProjectProject(models.Model):
     x_is_late = fields.Boolean(compute='_compute_x_is_late', string="Is Late")
     x_remaining_days = fields.Datetime(related='commitment_date', string="Due Day")
     x_is_today = fields.Boolean(compute='_compute_x_is_today')
+    qa_line_ids = fields.One2many('project.qa.line', 'project_id', string="QA Control", ondelete='cascade')
 
     @api.depends('commitment_date')
     def _compute_x_is_today(self):
@@ -63,3 +64,12 @@ class ProjectProject(models.Model):
             
             # Average the progress of all top-level tasks and convert to percentage (0-100)
             project.x_project_progress = (total_progress / len(top_level_tasks)) * 100
+
+
+    # Override unlink to reset QA fields in related Sale Order
+    def unlink(self):
+        for project in self:
+            # delete QA lines from project
+            project.qa_line_ids.unlink()
+
+        return super().unlink()

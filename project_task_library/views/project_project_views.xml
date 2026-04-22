@@ -117,4 +117,28 @@
         <field name="view_id" ref="project.project_list_view_group_stage"/>
     </record>
 
+    <!-- QA Control -->
+    <record id="view_project_form_qa_control" model="ir.ui.view">
+        <field name="name">project.form.qa.control</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="QA Control">
+                    <field name="qa_line_ids">
+                        <list editable="bottom">
+                            <field name="qa_id"/>
+
+                            <field name="is_done"
+                                attrs="{'readonly': [('is_done', '=', True)]}"/>
+
+                            <field name="done_by" readonly="1"/>
+                            <field name="done_date" readonly="1"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
