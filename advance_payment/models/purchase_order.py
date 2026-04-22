@@ -32,7 +32,7 @@ class PurchaseOrder(models.Model):
 
     def action_register_advance_payment(self):
         self.ensure_one()
-        if not self.env['ir.config_parameter'].sudo().get_param('rv_advance_payment.allow_purchase_advance_payment'):
+        if not self.env['ir.config_parameter'].sudo().get_param('advance_payment.allow_purchase_advance_payment'):
              raise UserError(_("Advance Payment for Purchase Orders is disabled in Settings."))
 
         return {

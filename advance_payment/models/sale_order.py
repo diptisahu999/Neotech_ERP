@@ -31,7 +31,7 @@ class SaleOrder(models.Model):
 
     def action_register_advance_payment(self):
         self.ensure_one()
-        if not self.env['ir.config_parameter'].sudo().get_param('rv_advance_payment.allow_sale_advance_payment'):
+        if not self.env['ir.config_parameter'].sudo().get_param('advance_payment.allow_sale_advance_payment'):
              raise UserError(_("Advance Payment for Sales Orders is disabled in Settings."))
 
         return {
@@ -39,7 +39,7 @@ class SaleOrder(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': 'account.payment',
             'view_mode': 'form',
-            'view_id': self.env.ref('rv_advance_payment.view_account_payment_form_advance').id,
+            'view_id': self.env.ref('advance_payment.view_account_payment_form_advance').id,
             'target': 'new',
             'context': {
                 'default_payment_type': 'inbound',
