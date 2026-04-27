@@ -1,0 +1,16 @@
+<odoo>
+
+    <!-- Remove System Report option from menu -->
+    <function model="ir.actions.report" name="write">
+        <value model="ir.actions.report"
+               search="[('model','=','purchase.order'), ('report_name','!=','purchase_report.report_purchase_order_custom')]"/>
+        <value eval="{'binding_model_id': False}"/>
+    </function>
+
+    <function model="ir.actions.report" name="write">
+        <value model="ir.actions.report"
+               search="[('model','=','purchase.order'), ('name','=','Request for Quotation')]"/>
+        <value eval="{'binding_model_id': False}"/>
+    </function>
+
+</odoo>

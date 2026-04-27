@@ -5,10 +5,9 @@
     'author': "Techvizoe",
     "depends": ["purchase"],
     "data": [
-        # Data
         "data/report_paperformat_data.xml",
-        # Reports
-        "reports/purchase_order_report_action.xml",
+        "reports/new_purchase_order_report_action.xml",
+        "views/purchase_report_view.xml"
     ],
     "application": True,
     "sequence": 1,
