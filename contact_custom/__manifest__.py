@@ -10,8 +10,10 @@
     """,
     'depends': ['base', 'contacts', 'crm', 'sale'],
     'data': [
+        'security/ir.model.access.csv',
         'views/res_partner_views.xml',
         'views/crm_lead_views.xml',
+        'views/bank_details_view.xml'
     ],
     'installable': True,
     'application': False,
