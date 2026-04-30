@@ -1,0 +1,55 @@
+<odoo>
+
+    <record id="view_partner_opening_balance" model="ir.ui.view">
+        <field name="name">res.partner.opening.balance</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+
+            <!-- INSERT INSIDE Customer Invoices -->
+            <xpath expr="//group[@id='invoice_send_settings']" position="inside">
+
+                <div class="o_row align-items-center mt8">
+
+                    <label for="opening_balance" class="o_form_label fw-bold" style="font-weight: bold;"/>
+
+                    <field name="opening_balance"
+                        nolabel="1"
+                        class="oe_inline"
+                        style="width:120px; margin-left:8px;"
+                        readonly="has_opening_entry"/>
+
+                    <div class="ob-radio-group d-flex align-items-center">
+
+                        <field name="opening_balance_type"
+                            widget="radio"
+                            options="{'horizontal': true}"
+                            nolabel="1"
+                            readonly="has_opening_entry"/>
+
+                    </div>
+
+                    <!-- SAVE -->
+                    <button name="action_create_opening"
+                            string="Save"
+                            type="object"
+                            class="btn btn-primary btn-sm"
+                            style="margin-left:5px;"
+                            invisible="has_opening_entry"/>
+
+                    <!-- DELETE -->
+                    <button name="action_delete_opening"
+                            string="Delete"
+                            type="object"
+                            class="btn btn-secondary btn-sm"
+                            style="margin-left:5px;"
+                            invisible="not has_opening_entry"/>
+
+                </div>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

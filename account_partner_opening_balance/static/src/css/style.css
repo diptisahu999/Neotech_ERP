@@ -1,0 +1,21 @@
+/* Works for BOTH readonly + edit mode */
+.ob-bold-field .o_field_widget,
+.ob-bold-field .o_field_widget span,
+.ob-bold-field .o_input {
+    font-weight: 600 !important;
+}
+
+.ob-radio-group .o_field_widget.o_radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ob-radio-group .o_radio_item {
+    margin-bottom: 0;
+    margin-right: 12px;
+}
+
+.ob-radio-group+button {
+    margin-left: 4px !important;
+}
