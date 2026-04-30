@@ -142,4 +142,38 @@
         </field>
     </record>
 
+    <!-- Hide Probability from lead-->
+    <record id="crm_lead_form_hide_probability" model="ir.ui.view">
+        <field name="name">crm.lead.form.hide.probability</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Hide the entire probability block including gear icon and automated probability -->
+            <xpath expr="//label[@for='probability']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Contact Name Visibility -->
+    <record id="crm_lead_form_contact_name_visibility" model="ir.ui.view">
+        <field name="name">crm.lead.form.contact.name.visibility</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='person_name']" position="before">
+                <field name="partner_is_company" invisible="1"/>
+            </xpath>
+
+            <!-- Contact Name visible only for Company -->
+            <xpath expr="//field[@name='person_name']/.." position="attributes">
+                <attribute name="invisible">not partner_is_company</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
 </odoo>

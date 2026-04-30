@@ -3,10 +3,16 @@ from odoo import models, fields, api
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
-    # Product associated with the lead
     product_id = fields.Many2one(
         'product.product',
         string="Product"
+    )
+
+    # Check if the selected customer is a company
+    partner_is_company = fields.Boolean(
+        related='partner_id.is_company',
+        string="Is Partner a Company",
+        readonly=True
     )
 
     # Override the action_new_quotation method to pass the product from the opportunity to the sale order
