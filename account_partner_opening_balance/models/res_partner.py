@@ -22,6 +22,32 @@ class ResPartner(models.Model):
         for rec in self:
             rec.has_opening_entry = bool(rec.opening_move_id)
 
+    # set Empty value if opening_move_id is not present
+    def read(self, fields=None, load='_classic_read'):
+        added_fields = []
+        if fields is not None:
+            fields_list = list(fields)
+            if any(f in fields_list for f in ['opening_balance', 'opening_balance_type']) and 'opening_move_id' not in fields_list:
+                fields_list.append('opening_move_id')
+                added_fields.append('opening_move_id')
+            fields = fields_list
+
+        res = super(ResPartner, self).read(fields=fields, load=load)
+
+        for record in res:
+            if not record.get('opening_move_id'):
+                if 'opening_balance' in record:
+                    record['opening_balance'] = 0.0
+                if 'opening_balance_type' in record:
+                    record['opening_balance_type'] = False
+
+        if added_fields:
+            for record in res:
+                for f in added_fields:
+                    record.pop(f, None)
+
+        return res
+
     # ✅ CREATE ENTRY
     def action_create_opening(self):
         self.ensure_one()
@@ -42,15 +68,15 @@ class ResPartner(models.Model):
             raise UserError("Create Miscellaneous Journal first.")
 
         # Account selection
-        if self.customer_rank > 0:
-            account = self.property_account_receivable_id
-        elif self.supplier_rank > 0:
-            account = self.property_account_payable_id
-        else:
-            raise UserError("Partner must be Customer or Vendor.")
+        account = (
+            self.property_account_receivable_id
+            or self.property_account_payable_id
+        )
 
         if not account:
-            raise UserError("Missing receivable/payable account.")
+            raise UserError(
+                "Configure Receivable/Payable Account on partner."
+            )  
 
         # Equity account
         equity = self.env['account.account'].search([

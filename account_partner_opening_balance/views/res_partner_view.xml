@@ -16,6 +16,8 @@
                     <field name="opening_balance"
                         nolabel="1"
                         class="oe_inline"
+                        placeholder="0.00"
+                        options="{'no_open': True}"
                         style="width:120px; margin-left:8px;"
                         readonly="has_opening_entry"/>
 
