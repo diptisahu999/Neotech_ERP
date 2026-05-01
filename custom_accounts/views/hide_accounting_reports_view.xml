@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Hide Generic Statements -->
+        <record id="base_accounting_kit.account_reports_generic_statements" model="ir.ui.menu">
+            <field name="active" eval="False"/>
+        </record>
+        
+        <!-- Hide Daily Reports -->
+        <record id="base_accounting_kit.account_reports_daily_reports" model="ir.ui.menu">
+            <field name="active" eval="False"/>
+        </record>
+        
+        <!-- Hide Aged Partner Balance -->
+        <record id="base_accounting_kit.menu_aged_trial_balance" model="ir.ui.menu">
+            <field name="active" eval="False"/>
+        </record>
+        
+        <!-- Hide Partner Reports -->
+        <record id="base_accounting_kit.account_reports_partner" model="ir.ui.menu">
+            <field name="active" eval="False"/>
+        </record>
+        
+        <!-- Hide Management -->
+        <record id="account.account_reports_management_menu" model="ir.ui.menu">
+            <field name="active" eval="False"/>
+        </record>
+        
+        <!-- Hide Audit Reports -->
+        <record id="base_accounting_kit.account_reports_audit" model="ir.ui.menu">
+            <field name="active" eval="False"/>
+        </record>
+    </data>
+</odoo>

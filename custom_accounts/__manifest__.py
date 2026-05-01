@@ -8,11 +8,12 @@
         1. This module adds opening debit and credit fields to account.account model and allows importing journal entries from a CSV file.
         2. This module also provides a wizard for creating opening balance entries.
     """,
-    'depends': ['account'],
+    'depends': ['account', 'base_accounting_kit'],
     'data'   : [
         'security/ir.model.access.csv',
         'views/opening_balance_wizard_view.xml',
         'views/account_settings_view.xml',
+        'views/hide_accounting_reports_view.xml',
     ],
     'installable': True,
 }
