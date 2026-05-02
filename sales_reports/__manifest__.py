@@ -1,6 +1,7 @@
 {
     "name": "Sales Reports",
     "version": "1.0",
+    "summary": "Custom sales reports and document upload functionality",
     "description": """
         1. New Custom sales reports and document upload functionality.
         2. Merge New custom quotation report with Document Upload.
