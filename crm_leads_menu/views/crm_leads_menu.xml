@@ -68,15 +68,24 @@
         <field name="view_mode">list,kanban,graph,pivot,form,calendar,activity</field>
     </record>
 
+    <!-- Override CRM Leads action: default to List view -->
+    <record id="crm.crm_lead_action_leads" model="ir.actions.act_window">
+        <field name="view_mode">list,kanban,graph,pivot,calendar,form,activity</field>
+    </record>
+
     <!-- Change kanban sequence to 1 so list (sequence=0) loads first -->
-    <!-- <record id="crm.crm_lead_action_pipeline_view_kanban" model="ir.actions.act_window.view">
+    <record id="crm.crm_lead_action_pipeline_view_kanban" model="ir.actions.act_window.view">
         <field name="sequence" eval="1"/>
-    </record> -->
+        <field name="view_mode">kanban</field>
+        <field name="act_window_id" ref="crm.crm_lead_action_pipeline"/>
+    </record>
 
     <!-- Set list sequence to 0 so it loads as default -->
-    <!-- <record id="crm.crm_lead_action_pipeline_view_tree" model="ir.actions.act_window.view">
+    <record id="crm.crm_lead_action_pipeline_view_tree" model="ir.actions.act_window.view">
         <field name="sequence" eval="0"/>
-    </record> -->
+        <field name="view_mode">list</field>
+        <field name="act_window_id" ref="crm.crm_lead_action_pipeline"/>
+    </record>
 
     <!-- Show Stages menu under Configuration > Pipeline (remove hidden group restriction) -->
     <record id="crm.menu_crm_lead_stage_act" model="ir.ui.menu">
@@ -85,23 +94,23 @@
 
     <!-- Leads Action -->
     <!-- When click on CRM - beside Sales - Add Action for Leads -->
-    <!-- <record id="action_crm_leads_only" model="ir.actions.act_window">
+    <record id="action_crm_leads_only" model="ir.actions.act_window">
         <field name="name">Leads</field>
         <field name="res_model">crm.lead</field>
         <field name="view_mode">list,kanban,form,calendar,pivot,graph,activity</field>
         <field name="view_id" ref="crm.crm_case_tree_view_leads"/>
         <field name="domain">[('type', '=', 'lead')]</field>
         <field name="context">{'default_type': 'lead', 'is_lead_view': True}</field>
-    </record> -->
+    </record>
 
     <!-- Menu under CRM -->
-    <!-- <menuitem
+    <menuitem
         id="crm_menu_leads_root"
         name="Leads"
         parent="crm.crm_menu_root"
         action="action_crm_leads_only"
         sequence="15"
-    /> -->
+    />
 
 
     <!-- Add Product on Lead and Opportunity form -->
