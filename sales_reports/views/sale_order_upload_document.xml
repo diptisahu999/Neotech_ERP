@@ -8,14 +8,14 @@
                 <page string="Documents">
                     <group string="HEADER">
                         <!-- Upload -->
-                        <field name="header_file" filename="header_filename" options="{'no_open': True}"/>
+                        <field name="header_file" filename="header_filename" options="{'no_open': True, 'accepted_file_extensions': '.pdf'}"/>
                         <!-- Show filename (clean, no duplicate) -->
                         <field name="header_filename" invisible="1"/>
                     </group>
 
                     <!-- FOOTER -->
                     <group string="FOOTER">
-                        <field name="footer_file" filename="footer_filename" options="{'no_open': True}"/>
+                        <field name="footer_file" filename="footer_filename" options="{'no_open': True, 'accepted_file_extensions': '.pdf'}"/>
                         <field name="footer_filename" invisible="1"/>
                     </group>
                 </page>

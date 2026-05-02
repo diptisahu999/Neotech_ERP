@@ -10,10 +10,10 @@ from PyPDF2 import PdfReader, PdfWriter
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    header_file = fields.Binary("Header Document")
+    header_file = fields.Binary("Header Document (.pdf)")
     header_filename = fields.Char("Header File Name")
 
-    footer_file = fields.Binary("Footer Document")
+    footer_file = fields.Binary("Footer Document (.pdf)")
     footer_filename = fields.Char("Footer File Name")
 
     def action_remove_header(self):
