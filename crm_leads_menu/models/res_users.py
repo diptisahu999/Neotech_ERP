@@ -105,3 +105,15 @@ class ResUsers(models.Model):
             },
         }
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('tz') == 'Asia/Calcutta':
+                vals['tz'] = 'Asia/Kolkata'
+        return super().create(vals_list)
+
+    def write(self, vals):
+        if vals.get('tz') == 'Asia/Calcutta':
+            vals['tz'] = 'Asia/Kolkata'
+        return super().write(vals)
+
