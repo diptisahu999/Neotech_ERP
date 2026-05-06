@@ -7,3 +7,11 @@ class TermsAndConditions(models.Model):
 
     name = fields.Char("Name", required=True)
     terms_condition = fields.Html("Terms and Conditions")
+
+
+class SaleRemarks(models.Model):
+    _name = "sale.remarks"
+    _description = "Sale Remarks"
+
+    name = fields.Char("Name", required=True)
+    remarks = fields.Html("Remarks")

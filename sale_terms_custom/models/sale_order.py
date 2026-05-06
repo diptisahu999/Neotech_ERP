@@ -7,20 +7,41 @@ class SaleOrder(models.Model):
 
     terms_condition_id = fields.Many2one("terms.and.conditions", string="Terms and Condition")
     additional_notes = fields.Html(string="Additional Notes")
+    remarks_id = fields.Many2one(
+        "sale.remarks",
+        string="Remarks"
+    )
+    remarks_section = fields.Html(string="Remarks Section", compute="_compute_sections", store=True)
+    terms_section = fields.Html(string="Terms & Conditions Section", compute="_compute_sections", store=True)
 
-    @api.onchange("terms_condition_id")
-    def _onchange_terms_condition_id(self):
-        if self.terms_condition_id:
-            self.note = self.terms_condition_id.terms_condition
-        else:
-            self.note = False   # 🔥 CLEAR the bottom note
+    @api.depends("remarks_id", "terms_condition_id")
+    def _compute_sections(self):
+        for record in self:
+            record.remarks_section = record.remarks_id.remarks if record.remarks_id else False
+            record.terms_section = record.terms_condition_id.terms_condition if record.terms_condition_id else False
+
+    @api.onchange("terms_condition_id", "remarks_id")
+    def _onchange_remarks_or_terms(self):
+        remarks_content = self.remarks_id.remarks if self.remarks_id else ""
+        terms_content = self.terms_condition_id.terms_condition if self.terms_condition_id else ""
+        
+        # Combine for the standard note field (used in reports)
+
+        combined_note = ""
+        if remarks_content:
+            combined_note += remarks_content
+        if terms_content:
+            if combined_note:
+                combined_note += "<br/>"
+            combined_note += terms_content
+            
+        self.note = combined_note
 
     def action_apply_terms(self):
         for record in self:
-            if record.terms_condition_id:
-                record.note = record.terms_condition_id.terms_condition
-            else:
-                record.note = False
+            record._onchange_remarks_or_terms()
+
+
 
     def _create_invoices(self, grouped=False, final=False, date=None):
         for order in self:

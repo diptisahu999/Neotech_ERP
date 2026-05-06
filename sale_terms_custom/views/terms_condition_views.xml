@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <!-- ===================================================== -->
+    <!-- TERMS & CONDITIONS -->
+    <!-- ===================================================== -->
     <record id="view_terms_and_conditions_tree" model="ir.ui.view">
         <field name="name">terms.and.conditions.tree</field>
         <field name="model">terms.and.conditions</field>
@@ -33,9 +37,61 @@
         <field name="view_mode">list,form</field>
     </record>
 
+    <!-- ===================================================== -->
+    <!-- REMARKS -->
+    <!-- ===================================================== -->
+
+    <record id="view_sale_remarks_tree" model="ir.ui.view">
+        <field name="name">sale.remarks.tree</field>
+        <field name="model">sale.remarks</field>
+        <field name="arch" type="xml">
+            <list string="Remarks Templates">
+                <field name="name"/>
+                <field name="remarks"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sale_remarks_form" model="ir.ui.view">
+        <field name="name">sale.remarks.form</field>
+        <field name="model">sale.remarks</field>
+        <field name="arch" type="xml">
+            <form string="Remarks Template">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="remarks"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_remarks" model="ir.actions.act_window">
+        <field name="name">Remarks Templates</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.remarks</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- SALE ORDER FIELD -->
+    <!-- ===================================================== -->
+
+
+
+    <!-- ===================================================== -->
+    <!-- MENUS -->
+    <!-- ===================================================== -->
+
     <!-- Menuitem to access settings -->
     <menuitem id="menu_terms_and_conditions"
               action="action_terms_and_conditions"
               parent="sale.menu_sale_config"
               sequence="100"/>
+
+    <menuitem id="menu_sale_remarks"
+            action="action_sale_remarks"
+            parent="sale.menu_sale_config"
+            sequence="101"/>
 </odoo>
