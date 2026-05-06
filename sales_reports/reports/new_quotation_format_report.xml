@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ====================================================== -->
+    <!-- NEW QUOTATION REPORT TEMPLATE -->
+    <!-- ====================================================== -->
+
+    <template id="report_quotation_vashi_style_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+
+                <t t-set="company" t-value="doc.company_id.sudo()"/>
+
+                <div class="article o_report_layout_standard"
+                     t-att-data-oe-model="doc._name"
+                     t-att-data-oe-id="doc.id"
+                     t-att-data-oe-lang="doc.env.context.get('lang')"
+                     style="font-family: Arial, Helvetica, sans-serif; font-size:13px;">
+
+                    <div class="page" style="padding:10px;">
+                        <!-- ================================================== -->
+                        <!-- HEADER -->
+                        <!-- ================================================== -->
+
+                        <table style="width:100%; border-collapse:collapse; border:1px solid #000; table-layout:fixed;">
+                            <tr>
+                                <!-- LOGO -->
+                                <td style="width:27%; text-align:center; vertical-align:middle; padding:1px; border:0px solid #000;">
+                                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                        style="max-width:250px; max-height:120px;"/>
+                                </td>
+
+                                <!-- COMPANY DETAILS -->
+                                <td style="width:45%; text-align:center; vertical-align:top; padding-top:12px;">
+                                    <!-- COMPANY NAME -->
+                                    <div style="font-size:20px; font-weight:bold; line-height:20px;">
+                                        <span t-field="company.name"/>
+                                    </div>
+                                    <!-- ADDRESS -->
+                                    <div style="font-size:13px; font-weight:bold; line-height:15px; margin-top:2px;">
+                                        <t t-if="company.street">
+                                            <span t-field="company.street"/>,
+                                        </t>
+                                        <br/>
+                                        <t t-if="company.street2">
+                                            <span t-field="company.street2"/>
+                                        </t>
+                                        <br/>
+                                        <span t-field="company.city"/>,
+                                        <span t-field="company.state_id.name"/>
+                                        -
+                                        <span t-field="company.zip"/>
+                                    </div>
+
+                                    <!-- GST -->
+                                    <div style="margin-top:4px; font-size:13px; font-weight:bold;">
+                                        GST No.:
+                                        <span t-field="company.vat"/>
+                                        <t t-if="company.company_registry">
+                                            , PAN:
+                                            <span t-field="company.company_registry"/>
+                                        </t>
+                                    </div>
+                                </td>
+
+                                <!-- QUOTATION AREA -->
+                                <td style="width:28%; padding:0; vertical-align:top;">
+                                    <!-- TITLE -->
+                                    <div style="text-align:center; font-size:20px; font-weight:bold; color:#243d68; padding-top:14px; padding-bottom:14px; border-bottom:1px solid #000; border-left:1px solid #000;">
+                                        Sales Quotation
+                                    </div>
+                                    <!-- 4 BOX SECTION -->
+                                    <table style="width:100%; border-collapse:collapse; table-layout:fixed; border-left:1px solid #000;">
+                                        <tr>
+                                            <!-- QUOTE NO -->
+                                            <td style="width:50%; border-right:1px solid #000; border-bottom:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
+                                                <strong>Quote No :</strong>
+                                                <br/>
+                                                <span t-field="doc.name"/>
+                                            </td>
+                                            <!-- QUOTE DATE -->
+                                            <td style="width:50%; border-bottom:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
+                                                <strong>Quote Date :</strong>
+                                                <br/>
+                                                <span t-esc="doc.date_order.strftime('%d/%m/%Y') if doc.date_order else ''"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <!-- CASE NO -->
+                                            <td style="border-right:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
+                                                <strong>Case No :</strong>
+                                                <br/>
+                                                <span> - </span>
+                                            </td>
+                                            <!-- QUOTE UPDATE -->
+                                            <td style="border-right:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
+                                                <strong>Quote Update :</strong>
+                                                <br/>
+                                                <span t-esc="doc.write_date.strftime('%d/%m/%Y') if doc.write_date else ''"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- ================================================== -->
+                        <!-- CUSTOMER + OTHER DETAILS -->
+                        <!-- ================================================== -->
+
+                        <table style="width:100%; border-collapse:collapse; border-left:1px solid #000; 
+                                    border-right:1px solid #000; border-bottom:1px solid #000; table-layout:fixed;">
+                            <!-- TOP ROW -->
+                            <tr>
+                                <!-- CUSTOMER DETAILS -->
+                                <td style="width:50%; vertical-align:top; border-right:1px solid #000; border-bottom:1px solid #000; padding:8px;">
+                                    <div style="font-size:13px; line-height:15px;">
+                                        <span style="font-weight:bold;">Customer Details:</span>
+                                        <span style="margin-left:20px;">
+                                            <span t-field="doc.partner_id.name"/>,
+                                            <br/>
+                                            <span style="margin-left:135px;">
+                                                <span t-field="doc.partner_id.contact_address"/>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <!-- CONTACT DETAILS -->
+                                <td style="width:50%; vertical-align:top; border-bottom:1px solid #000; padding:8px;">
+                                    <div style="font-size:13px; line-height:18px;">
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Name:</span>
+                                            <span t-field="doc.partner_id.name"/>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Contact No:</span>
+                                            <span t-field="doc.partner_id.mobile"/>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Email Id:</span>
+                                            <span t-field="doc.partner_id.email"/>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- BOTTOM ROW -->
+                            <tr>
+                                <!-- LEFT BOTTOM -->
+                                <td style="width:50%; vertical-align:top; border-right:1px solid #000; padding:8px;">
+                                    <div style="font-size:13px; line-height:18px;">
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Customer Reference No.:</span>
+                                            <span t-field="doc.client_order_ref"/>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Price Validity:</span>
+                                            <span t-if="doc.state in ['draft', 'sent'] and doc.validity_date">
+                                                <t t-set="validity_days" t-value="(doc.validity_date - doc.create_date.date()).days"/>
+                                                <t t-esc="validity_days"/> Days
+                                            </span>
+                                            <span t-else="">
+                                                -
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Sales Person:</span>
+                                            <span style="color:#1d32ff; font-weight:bold;">
+                                                <span t-field="doc.user_id.name"/>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Sales Person No:</span>
+                                            <span style="color:#1d32ff; font-weight:bold;">
+                                                <span t-field="doc.user_id.phone"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- RIGHT BOTTOM -->
+                                <td style="width:50%; vertical-align:top; padding:8px;">
+                                    <div style="font-size:13px; line-height:18px;">
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Payment Terms:</span>
+                                            <span t-field="doc.payment_term_id.name"/>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Freight:</span>
+                                            <span>To Pay</span>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold; display:inline-block; width:35%;">Packing &amp; Forwarding:</span>
+                                            <span>Inclusive</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- ================================================== -->
+                        <!-- INTRO TEXT -->
+                        <!-- ================================================== -->
+
+                        <div style="border:1px solid #000; padding:8px; line-height:20px; font-size:13px; margin-top:10px; margin-bottom:10px;">
+                            Dear
+                            <span t-field="doc.partner_id.name"/>,
+                            <br/>
+                            We thank you for your valuable enquiry.
+                            Our quote for your requirements is as below.
+                        </div>
+
+                        <!-- ================================================== -->
+                        <!-- PRODUCT TABLE -->
+                        <!-- ================================================== -->
+
+                        <table style="width:100%; border-collapse:collapse; border:1px solid #000; font-size:13px;">
+                            <thead>
+                                <tr style="background:#efefef;">
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:4%;">Sr. No</th>
+                                    <th style="border:1px solid #000; font-weight:bold; text-align:center; width:8%;">HSN</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:left; width:36%;">Product Description</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:8%;">Delivery Period</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:7%;">Quantity</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:10%;">Rate Per Unit</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:6%;">Disc %</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:10%;">Net Unit Price</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:11%;">Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <t t-set="sequence" t-value="1"/>
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <t t-if="not line.display_type">
+                                        <tr>
+                                            <td style="border:1px solid #000; padding:6px; text-align:center;">
+                                                <t t-esc="sequence"/>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px; text-align:center;">
+                                                <span t-field="line.product_id.l10n_in_hsn_code"/>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px;">
+                                                <span t-field="line.name"/>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px; text-align:center;">
+                                                <t t-set="delivery_target" t-value="doc.commitment_date or doc.expected_date"/>
+                                                <t t-if="delivery_target and doc.create_date">
+                                                    <t t-set="delivery_days" t-value="(delivery_target.date() - doc.create_date.date()).days"/>
+                                                    <t t-set="delivery_weeks" t-value="(delivery_days + 6) // 7 if delivery_days > 0 else 2"/>
+                                                    <span t-esc="delivery_weeks"/> Weeks
+                                                </t>
+                                                <t t-else="">
+                                                    -
+                                                </t>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px; text-align:right;">
+                                                <span t-field="line.product_uom_qty"/>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px; text-align:right;">
+                                                <span t-field="line.price_unit"/>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px; text-align:right;">
+                                                <span t-field="line.discount"/>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px; text-align:right;">
+                                                <t t-set="net_unit_price"
+                                                t-value="line.price_unit - ((line.price_unit * line.discount) / 100)"/>
+                                                <span t-esc="net_unit_price"/>
+                                            </td>
+                                            <td style="border:1px solid #000; padding:6px; text-align:right;">
+                                                <span t-esc="'{:,.2f}'.format(line.price_subtotal)"/>
+                                            </td>
+                                        </tr>
+                                        <t t-set="sequence" t-value="sequence + 1"/>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <!-- ================================================== -->
+                        <!-- TOTALS RIGHT SIDE -->
+                        <!-- ================================================== -->
+
+                        <div style="width:100%; overflow:hidden;">
+                            <div style="width:25%; float:right; border-left:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000; font-size:13px;">
+                                <!-- TOTAL BEFORE TAX -->
+                                <div style="border-bottom:1px solid #000; padding:6px;">
+                                    <span style="font-weight:bold;">
+                                        Total Before Tax:
+                                    </span>
+                                    <span style="float:right;">
+                                        <span t-esc="'{:,.2f}'.format(doc.amount_untaxed)"/>
+                                    </span>
+                                </div>
+
+                                <!-- GST -->
+                                <div style="padding:6px;">
+                                    <span style="font-weight:bold;">
+                                        GST Applicable:
+                                    </span>
+                                    <span style="float:right;">
+                                        <span t-esc="'{:,.2f}'.format(doc.amount_tax)"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ================================================== -->
+                        <!-- AMOUNT IN WORDS -->
+                        <!-- ================================================== -->
+
+                        <div style="clear:both; border-bottom:1px solid #000; padding:8px; text-align:right; font-weight:bold; font-size:13px;">
+                            Amount in words: (INR)
+                        </div>
+
+                        <!-- ================================================== -->
+                        <!-- REMARK + BANK -->
+                        <!-- ================================================== -->
+
+                        <div style="width: 100%;">
+                            <div style="display:table; width:100%; border-collapse:collapse; border-left:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000; font-size:13px;">
+                                <div style="display:table-row;">
+                                    <!-- LEFT -->
+                                    <div style="display:table-cell; width:50%; vertical-align:top; border-right:1px solid #000; padding:6px 8px; line-height:18px;">
+                                        <div style="font-size:14px;"><strong>Remark:</strong></div>
+                                        <div style="margin-top:6px;">
+                                            <t t-if="doc.remarks_section">
+                                                <span t-field="doc.remarks_section"/>
+                                            </t>
+                                        </div>
+                                    </div>
+
+                                    <!-- RIGHT -->
+                                    <div style="display:table-cell; width:50%; vertical-align:top; padding:6px 8px; line-height:18px;">
+                                        <div style="font-size:14px; font-weight:bold; text-decoration:underline; margin-bottom:8px;">
+                                            NEFT / RTGS Instructions:
+                                        </div>
+
+                                        <t t-if="company.partner_id.bank_ids">
+                                            <div style="margin-bottom: 4px;">
+                                                RTGS in favour of <span t-field="company.name"/>
+                                            </div>
+                                            <t t-foreach="company.partner_id.bank_ids" t-as="bank">
+                                                <div>
+                                                    <t t-esc="bank_index + 1"/>.<span t-field="bank.bank_id.name"/>
+                                                    A/c No. -
+                                                    <span t-field="bank.acc_number"/>
+                                                    <t t-if="bank.ifsc_id">
+                                                        , IFSC -
+                                                        <span t-field="bank.ifsc_id.name"/>
+                                                    </t>
+                                                </div>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Dummy div to absorb wkhtmltopdf stretching -->
+                            <div style="height: 1px; clear: both; font-size: 1px; line-height: 1px;">&amp;nbsp;</div>
+                        </div>
+
+                        <!-- ================================================== -->
+                        <!-- TERMS -->
+                        <!-- ================================================== -->
+
+                        <div style="border:1px solid #000; padding:2px 8px 2px 8px; margin-top:10px; page-break-inside: avoid;">
+                            <div style="font-size:16px; font-weight:bold; margin-bottom:4px;">
+                                Terms &amp; Conditions:
+                            </div>
+                            <div style="margin-top:4px;">
+                                <span t-field="doc.terms_section"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ================================================== -->
+                <!-- FOOTER -->
+                <!-- ================================================== -->
+                <div class="footer" style="width: 100%; text-align: center; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
+                    <div style="font-weight: bold; color: #000; padding-top: 5mm;">
+                        <span>This is a computer generated document. No signature is Required</span>
+                        <br/>
+                        <span style="display: inline-block; margin-top: 4px;">Page <span class="page"/> of <span class="topage"/></span>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+    <!-- ====================================================== -->
+    <!-- REPORT ACTION -->
+    <!-- ====================================================== -->
+
+    <record id="action_report_quotation_vashi_style" model="ir.actions.report">
+        <field name="name">Quotation New Format</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sales_reports.report_quotation_vashi_style_document</field>
+        <field name="report_file">sales_reports.report_quotation_vashi_style_document</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_quotation_full"/>
+        <field name="print_report_name">
+            'Quotation - %s' % (object.name)
+        </field>
+    </record>
+
+    <record id="paperformat_quotation_full" model="report.paperformat">
+        <field name="margin_bottom">20</field>
+    </record>
+
+</odoo>

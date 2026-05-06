@@ -414,7 +414,7 @@
 
     <!-- Quotation Report Action -->
     <record id="action_unified_quotation_new" model="ir.actions.report">
-        <field name="name">New Custom Quotation</field>
+        <field name="name">Custom Quotation</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">sales_reports.report_unified_quotation_new</field>

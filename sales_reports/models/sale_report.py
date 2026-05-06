@@ -36,6 +36,18 @@ class SaleOrder(models.Model):
 
 
 
+    cleaned_note_html = fields.Html(compute='_compute_cleaned_note_html', store=False)
+
+    def _compute_cleaned_note_html(self):
+        for rec in self:
+            if rec.note:
+                import re
+                # Strip trailing <p><br></p>, <p>&nbsp;</p>, <br>, and whitespace
+                clean_html = re.sub(r'(<p[^>]*>(<br\s*/?>|\s|&nbsp;)*</p>\s*|<br\s*/?>\s*)+$', '', rec.note)
+                rec.cleaned_note_html = clean_html
+            else:
+                rec.cleaned_note_html = False
+
     # Send New Quotation Report by Email
     def action_quotation_send(self):
         self.ensure_one()
