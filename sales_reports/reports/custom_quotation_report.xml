@@ -226,36 +226,44 @@
                                     <strong class="mb-1 px-2">Bank Details:</strong>
                                 </td>
                             </tr>
+
                             <tr style="border-top: 0; padding-left: 10px;">
                                 <td style="border-top: 0; padding-left: 10px;">
-                                    <table class="table-borderless px-2">
-                                        <tr class="mb-2 ml-2">
-                                            <td class="text-muted">Bank:</td>
-                                            <td style="padding-left: 20px;">
-                                                <span>BANK NAME</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="mb-4 ml-2">
-                                            <td class="text-muted">Account #:</td>
-                                            <td style="padding-left: 20px;">
-                                                <span>*************</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="mb-4 ml-2">
-                                            <td class="text-muted">IFSC Code:</td>
-                                            <td style="padding-left: 20px;">
-                                                <span>*************</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="mb-4 ml-2">
-                                            <td class="text-muted">Branch:</td>
-                                            <td style="padding-left: 20px;">
-                                                <span>*************</span>
-                                            </td>
-                                        </tr>
-                                    </table>
+
+                                    <t t-if="company.partner_id.bank_ids">
+                                        <t t-set="bank" t-value="company.partner_id.bank_ids[:1]"/>
+
+                                        <table class="table-borderless px-2">
+                                            <tr class="mb-2 ml-2">
+                                                <td class="text-muted">Bank:</td>
+                                                <td style="padding-left: 20px;">
+                                                    <span t-field="bank.bank_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="mb-4 ml-2">
+                                                <td class="text-muted">Account #:</td>
+                                                <td style="padding-left: 20px;">
+                                                    <span t-esc="bank.acc_number"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="mb-4 ml-2">
+                                                <td class="text-muted">IFSC Code:</td>
+                                                <td style="padding-left: 20px;">
+                                                    <span t-esc="bank.ifsc_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr class="mb-4 ml-2">
+                                                <td class="text-muted">Branch:</td>
+                                                <td style="padding-left: 20px;">
+                                                    <span t-esc="bank.branch_id.name"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </t>
+
                                 </td>
                             </tr>
+
                         </table>
                     </div>
                     <div class="col-6 py-2">
