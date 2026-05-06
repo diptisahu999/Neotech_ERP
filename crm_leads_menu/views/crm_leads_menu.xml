@@ -155,9 +155,13 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
 
-            <!-- Hide Company Name Field -->
-            <xpath expr="//field[@name='partner_name']" position="attributes">
-                <attribute name="invisible">1</attribute>
+            <!-- Remove original Customer field from its standard location to avoid duplicates -->
+            <xpath expr="//field[@name='partner_id']" position="replace"/>
+
+            <!-- Replace Company Name with Customer field for Leads -->
+            <xpath expr="//field[@name='partner_name']" position="replace">
+                <field name="partner_id" string="Customer" widget="res_partner_many2one" 
+                       context="{'res_partner_search_mode': 'customer', 'show_vat': True}"/>
             </xpath>
         </field>
     </record>
