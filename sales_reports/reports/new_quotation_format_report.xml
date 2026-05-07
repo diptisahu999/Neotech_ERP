@@ -24,20 +24,19 @@
 
                         <table style="width:100%; border-collapse:collapse; border:1px solid #000; table-layout:fixed;">
                             <tr>
-                                <!-- LOGO -->
-                                <td style="width:27%; text-align:center; vertical-align:middle; padding:1px; border:0px solid #000;">
+                                <td style="width:28%; text-align:center; vertical-align:middle; padding:1px; border:0px solid #000;">
                                     <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
-                                        style="max-width:250px; max-height:120px;"/>
+                                        style="max-width:300px; max-height:140px;"/>
                                 </td>
 
                                 <!-- COMPANY DETAILS -->
-                                <td style="width:45%; text-align:center; vertical-align:top; padding-top:12px;">
+                                <td style="width:44%; text-align:center; vertical-align:top; padding-top:12px;">
                                     <!-- COMPANY NAME -->
-                                    <div style="font-size:20px; font-weight:bold; line-height:20px;">
+                                    <div style="font-size:24px; font-weight:bold; line-height:24px; color:#243d68;">
                                         <span t-field="company.name"/>
                                     </div>
                                     <!-- ADDRESS -->
-                                    <div style="font-size:13px; font-weight:bold; line-height:15px; margin-top:2px;">
+                                    <div style="font-size:11px; line-height:14px; margin-top:4px; color:#333;">
                                         <t t-if="company.street">
                                             <span t-field="company.street"/>,
                                         </t>
@@ -53,7 +52,7 @@
                                     </div>
 
                                     <!-- GST -->
-                                    <div style="margin-top:4px; font-size:13px; font-weight:bold;">
+                                    <div style="margin-top:6px; font-size:12px; font-weight:bold;">
                                         GST No.:
                                         <span t-field="company.vat"/>
                                         <t t-if="company.company_registry">
@@ -141,7 +140,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="font-weight:bold; vertical-align:top; border:none;">Contact No:</td>
-                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-field="doc.partner_id.mobile"/></td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-esc="doc.partner_id.mobile or doc.partner_id.phone or '-'"/></td>
                                             </tr>
                                             <tr>
                                                 <td style="font-weight:bold; vertical-align:top; border:none;">Email Id:</td>
@@ -185,7 +184,7 @@
                                                 <td style="font-weight:bold; vertical-align:top; border:none;">Sales Person No:</td>
                                                 <td style="vertical-align:top; border:none;">
                                                     <span style="color:#1d32ff; font-weight:bold;">
-                                                        <span t-field="doc.user_id.phone"/>
+                                                        <span t-esc="doc.user_id.phone or doc.user_id.mobile or doc.user_id.partner_id.phone or '-'"/>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -330,8 +329,8 @@
                         <!-- AMOUNT IN WORDS -->
                         <!-- ================================================== -->
 
-                        <div style="clear:both; border-bottom:1px solid #000; padding:8px; text-align:right; font-weight:bold; font-size:13px;">
-                            Amount in words: (INR)
+                        <div style="clear:both; border-bottom:1px solid #000; padding:8px; text-align:right; font-size:13px;">
+                            <span style="font-weight:bold;">Amount in words:</span> <span t-esc="doc.currency_id.amount_to_text(doc.amount_total)"/>
                         </div>
 
                         <!-- ================================================== -->
