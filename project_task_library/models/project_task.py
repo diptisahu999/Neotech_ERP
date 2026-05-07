@@ -54,12 +54,12 @@ class ProjectTask(models.Model):
     def get_view(self, view_id=None, view_type='form', **options):
         """
         Override get_view to dynamically remove 'Done' state from the selection
-        options for non-Admin users. This hides the button/option in the UI.
+        options for non-Admin/Manager users. This hides the button/option in the UI.
         """
         res = super().get_view(view_id=view_id, view_type=view_type, **options)
 
         # Check if 'state' field exists in the view and User is NOT a Manager
-        if 'state' in res.get('fields', {}) and not self.env.user.has_group('project.group_project_manager'):
+        if 'state' in res.get('fields', {}) and not self.env.user.has_group('project_task_library.group_project_team_manager'):
             selection = res['fields']['state']['selection']
             # Remove '1_done' from the selection list
             # We filter the list of tuples [('value', 'Label'), ...]
@@ -72,15 +72,26 @@ class ProjectTask(models.Model):
         """
         Override write to enforce permission rules for Task State changes.
         - Project Users: Can set state to '03_approved' but NOT '1_done'.
-        - Project Managers: Can set state to '1_done'.
+        - Project Managers: Can set state to '1_done' for their own tasks.
+        - Administrators: Can set state to '1_done' for all tasks.
         """
         if 'state' in vals and vals['state'] == '1_done':
-            # Check if user is a Manager (Administrator)
-            if not self.env.user.has_group('project.group_project_manager'):
+            is_admin = self.env.user.has_group('project.group_project_manager')
+            is_manager = self.env.user.has_group('project_task_library.group_project_team_manager')
+
+            if is_admin:
+                pass
+            elif is_manager:
+                for task in self:
+                    if self.env.user not in task.user_ids:
+                        raise UserError(
+                            "Access Denied: As a Manager, you can only mark your own assigned tasks as 'Done'."
+                        )
+            else:
                 raise UserError(
                     "Access Denied: You do not have permission to mark this task as 'Done'.\n\n"
                     "Please mark the task as 'Approved' instead. "
-                    "An Administrator will review and mark it as Done."
+                    "An Administrator or Manager will review and mark it as Done."
                 )
         
         return super(ProjectTask, self).write(vals)

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--
+            Override the To-do preloading server action.
+            - Administrators: Show ALL private tasks, grouped by Assignee
+            - Everyone else: Show only their own tasks (default behavior)
+        -->
+        <record id="project_todo.project_task_preload_action_todo" model="ir.actions.server">
+            <field name="code">
+model._ensure_onboarding_todo()
+action = env["ir.actions.actions"]._for_xml_id("project_todo.project_task_action_todo")
+if user.has_group('project.group_project_manager'):
+    action['domain'] = [('project_id', '=', False), ('parent_id', '=', False)]
+    action['context'] = {
+        'search_default_open_tasks': 1,
+        'default_project_id': False,
+        'group_by': ['user_ids'],
+        'list_view_ref': 'project_todo.project_task_view_todo_tree',
+    }
+else:
+    action['domain'] = [('user_ids', 'in', [uid]), ('project_id', '=', False), ('parent_id', '=', False)]
+            </field>
+        </record>
+
+        <!-- Inherit To-do Form: Add "Task Date" (create_date) field — auto-set to today on creation -->
+        <record id="view_todo_form_inherit_task_date" model="ir.ui.view">
+            <field name="name">project.task.view.todo.form.inherit.task.date</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project_todo.project_task_view_todo_form"/>
+            <field name="arch" type="xml">
+                <!--
+                    Insert Task Date (create_date) after the assignees/tags group.
+                    create_date is automatically set to today when a task is created.
+                    It is readonly — no manual editing needed.
+                -->
+                <xpath expr="//group[1]" position="after">
+                    <group>
+                        <group>
+                            <field name="create_date"
+                                   string="Task Date"
+                                   readonly="1"
+                                   widget="date"
+                                   options="{'hide_seconds': true}"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit To-do Search: Add "Created On" date period filter -->
+        <record id="view_todo_search_inherit_date_filters" model="ir.ui.view">
+            <field name="name">project.task.view.todo.search.inherit.date.filters</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project_todo.project_task_view_todo_search"/>
+            <field name="arch" type="xml">
+                <!--
+                    NOTE: Filter domains are evaluated in BOTH Python (server) and JavaScript
+                    (browser). Only context_today() + .strftime() work safely in both.
+                    datetime.timedelta / relativedelta are NOT available in the JS evaluator.
+
+                    For "This Week": Use the built-in `date` attribute filter which Odoo
+                    handles correctly across client and server automatically.
+                -->
+                <xpath expr="//filter[@name='closed_on']" position="after">
+                    <separator/>
+                    <!-- Created Today: tasks created from midnight to end of today -->
+                    <filter string="Created Today"
+                            name="created_today"
+                            domain="[('create_date', '&gt;=', context_today().strftime('%Y-%m-%d')),
+                                     ('create_date', '&lt;', (context_today() + relativedelta(days=1)).strftime('%Y-%m-%d'))]"/>
+                    <!-- Created This Month: from 1st of the current month -->
+                    <filter string="Created This Month"
+                            name="created_this_month"
+                            domain="[('create_date', '&gt;=', context_today().strftime('%Y-%m-01'))]"/>
+                    <separator/>
+                    <!--
+                        "Created On" date period picker: click the arrow ▼ to pick
+                        This Week / This Month / This Quarter / This Year etc.
+                    -->
+                    <filter string="Created On" name="filter_created_on" date="create_date"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
