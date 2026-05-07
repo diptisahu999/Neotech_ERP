@@ -8,3 +8,4 @@ def _post_init_hook(env):
     'Asia/Calcutta' is often not recognized by newer PostgreSQL installations.
     """
     env.cr.execute("UPDATE res_users SET tz = 'Asia/Kolkata' WHERE tz = 'Asia/Calcutta'")
+    env.cr.execute("UPDATE res_lang SET date_format = '%d/%m/%Y', time_format = '%H:%M:%S' WHERE active = True")

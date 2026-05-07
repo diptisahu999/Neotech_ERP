@@ -37,6 +37,16 @@
             </xpath>
         </field>
     </record>
+    <record id="crm_lead_tree_view_inherit_create_date" model="ir.ui.view">
+        <field name="name">crm.lead.tree.view.inherit.create.date</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="create_date" string="Create Date" widget="date" optional="show"/>
+            </xpath>
+        </field>
+    </record>
 
     <!-- Hide Generate Leads button in Opportunity Kanban view -->
     <record id="crm_hide_gen_leads_oppor_kanban" model="ir.ui.view">

@@ -15,6 +15,7 @@
         'views/crm_lead_distribute_wizard_view.xml',
         'views/crm_lead_followup_view.xml',
         'views/res_users_view.xml',
+        'data/res_lang_data.xml',
     ],
     'installable': True,
     'application': False,
