@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Add delete button to Contact Tags (res.partner.category) -->
+    <record id="view_partner_category_list_inherit_delete" model="ir.ui.view">
+        <field name="name">res.partner.category.list.inherit.delete</field>
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list|//tree" position="inside">
+                <field name="can_search_more_tags" column_invisible="1"/>
+                <button name="action_delete_tag" type="object" icon="fa-trash" title="Delete" 
+                        confirm="Are you sure you want to delete this tag?" 
+                        invisible="not can_search_more_tags"
+                        class="text-danger"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add delete button to CRM Tags (crm.tag) -->
+    <record id="crm_tag_view_tree_inherit_delete" model="ir.ui.view">
+        <field name="name">crm.tag.view.tree.inherit.delete</field>
+        <field name="model">crm.tag</field>
+        <field name="inherit_id" ref="sales_team.sales_team_crm_tag_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list|//tree" position="inside">
+                <field name="can_search_more_tags" column_invisible="1"/>
+                <button name="action_delete_tag" type="object" icon="fa-trash" title="Delete" 
+                        confirm="Are you sure you want to delete this tag?" 
+                        invisible="not can_search_more_tags"
+                        class="text-danger"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_partner_form_tag_permission" model="ir.ui.view">
+        <field name="name">res.partner.form.tag.permission</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <field name="can_search_more_tags" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">not can_search_more_tags</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="category_id" widget="many2many_tags" string="Tags"
+                       invisible="can_search_more_tags"
+                       options="{'no_create': True, 'no_create_edit': True, 'no_search_more': True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="crm_lead_view_form_tag_permission" model="ir.ui.view">
+        <field name="name">crm.lead.form.tag.permission</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <field name="can_search_more_tags" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position="attributes">
+                <attribute name="invisible">not can_search_more_tags</attribute>
+            </xpath>
+            <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position="after">
+                <field name="tag_ids" widget="many2many_tags" string="Tags"
+                       invisible="can_search_more_tags"
+                       options="{'no_create': True, 'no_create_edit': True, 'no_search_more': True}"/>
+            </xpath>
+
+            <xpath expr="//group[field[@name='tag_ids']][1]/field[@name='tag_ids']" position="attributes">
+                <attribute name="invisible">not can_search_more_tags</attribute>
+            </xpath>
+            <xpath expr="//group[field[@name='tag_ids']][1]/field[@name='tag_ids']" position="after">
+                <field name="tag_ids" widget="many2many_tags" string="Tags"
+                       invisible="can_search_more_tags"
+                       options="{'no_create': True, 'no_create_edit': True, 'no_search_more': True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
