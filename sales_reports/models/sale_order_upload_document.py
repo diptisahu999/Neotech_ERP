@@ -37,8 +37,16 @@ class ReportMerge(models.AbstractModel):
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
 
-        # Only apply for your custom report
-        if report_ref != 'sales_reports.report_unified_quotation_new':
+        # Define the list of reports that should support PDF merging
+        allowed_reports = [
+            'sales_reports.report_unified_quotation_new',
+            'sales_reports.report_quotation_vashi_style_document',
+            'sales_reports.report_unified_quotation',
+            'sales_reports.report_unified_proforma'
+        ]
+
+        # Only apply for allowed reports
+        if report_ref not in allowed_reports:
             return super()._render_qweb_pdf(report_ref, res_ids, data)
 
         records = self.env['sale.order'].browse(res_ids)
