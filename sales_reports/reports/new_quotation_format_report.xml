@@ -113,86 +113,107 @@
                             <!-- TOP ROW -->
                             <tr>
                                 <!-- CUSTOMER DETAILS -->
-                                <td style="width:50%; vertical-align:top; border-right:1px solid #000; border-bottom:1px solid #000; padding:8px;">
-                                    <div style="font-size:13px; line-height:15px;">
-                                        <span style="font-weight:bold;">Customer Details:</span>
-                                        <span style="margin-left:20px;">
-                                            <span t-field="doc.partner_id.name"/>,
-                                            <br/>
-                                            <span style="margin-left:135px;">
-                                                <span t-field="doc.partner_id.contact_address"/>
-                                            </span>
-                                        </span>
+                                <td style="width:55%; vertical-align:top; border-right:1px solid #000; border-bottom:1px solid #000; padding:8px;">
+                                    <div style="font-size:13px; line-height:18px;">
+                                        <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
+                                            <tr>
+                                                <td style="width:110px; font-weight:bold; vertical-align:top; border:none;">Customer Details:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:none;">
+                                                    <div style="font-weight:bold; margin-bottom:4px;">
+                                                        <span t-field="doc.partner_id.name"/>
+                                                    </div>
+                                                    <div style="word-wrap: break-word; border:none;">
+                                                        <span t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </td>
 
                                 <!-- CONTACT DETAILS -->
-                                <td style="width:50%; vertical-align:top; border-bottom:1px solid #000; padding:8px;">
+                                <td style="width:45%; vertical-align:top; border-bottom:1px solid #000; padding:8px;">
                                     <div style="font-size:13px; line-height:18px;">
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Name:</span>
-                                            <span t-field="doc.partner_id.name"/>
-                                        </div>
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Contact No:</span>
-                                            <span t-field="doc.partner_id.mobile"/>
-                                        </div>
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Email Id:</span>
-                                            <span t-field="doc.partner_id.email"/>
-                                        </div>
+                                        <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
+                                            <tr>
+                                                <td style="width:85px; font-weight:bold; vertical-align:top; border:none;">Name:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-field="doc.partner_id.name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:none;">Contact No:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-field="doc.partner_id.mobile"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:none;">Email Id:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-field="doc.partner_id.email"/></td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </td>
                             </tr>
                             <!-- BOTTOM ROW -->
                             <tr>
                                 <!-- LEFT BOTTOM -->
-                                <td style="width:50%; vertical-align:top; border-right:1px solid #000; padding:8px;">
+                                <td style="width:55%; vertical-align:top; border-right:1px solid #000; padding:8px;">
                                     <div style="font-size:13px; line-height:18px;">
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Customer Reference No.:</span>
-                                            <span t-field="doc.client_order_ref"/>
-                                        </div>
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Price Validity:</span>
-                                            <span t-if="doc.state in ['draft', 'sent'] and doc.validity_date">
-                                                <t t-set="validity_days" t-value="(doc.validity_date - doc.create_date.date()).days"/>
-                                                <t t-esc="validity_days"/> Days
-                                            </span>
-                                            <span t-else="">
-                                                -
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Sales Person:</span>
-                                            <span style="color:#1d32ff; font-weight:bold;">
-                                                <span t-field="doc.user_id.name"/>
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Sales Person No:</span>
-                                            <span style="color:#1d32ff; font-weight:bold;">
-                                                <span t-field="doc.user_id.phone"/>
-                                            </span>
-                                        </div>
+                                        <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
+                                            <tr>
+                                                <td style="width:170px; font-weight:bold; vertical-align:top; border:none;">Customer Reference No.:</td>
+                                                <td style="vertical-align:top; border:none;"><span t-field="doc.client_order_ref"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:none;">Price Validity:</td>
+                                                <td style="vertical-align:top; border:none;">
+                                                    <span t-if="doc.state in ['draft', 'sent'] and doc.validity_date">
+                                                        <t t-set="validity_days" t-value="(doc.validity_date - doc.create_date.date()).days"/>
+                                                        <t t-esc="validity_days"/> Days
+                                                    </span>
+                                                    <span t-else="">
+                                                        -
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:none;">Sales Person:</td>
+                                                <td style="vertical-align:top; border:none;">
+                                                    <span style="color:#1d32ff; font-weight:bold;">
+                                                        <span t-field="doc.user_id.name"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:none;">Sales Person No:</td>
+                                                <td style="vertical-align:top; border:none;">
+                                                    <span style="color:#1d32ff; font-weight:bold;">
+                                                        <span t-field="doc.user_id.phone"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </td>
 
                                 <!-- RIGHT BOTTOM -->
-                                <td style="width:50%; vertical-align:top; padding:8px;">
+                                <td style="width:45%; vertical-align:top; padding:8px;">
                                     <div style="font-size:13px; line-height:18px;">
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Payment Terms:</span>
-                                            <span t-field="doc.payment_term_id.name"/>
-                                        </div>
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Freight:</span>
-                                            <span>To Pay</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-weight:bold; display:inline-block; width:35%;">Packing &amp; Forwarding:</span>
-                                            <span>Inclusive</span>
-                                        </div>
+                                        <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
+                                            <tr>
+                                                <td style="width:140px; font-weight:bold; vertical-align:top; border:none;">Payment Terms:</td>
+                                                <td style="vertical-align:top; border:none;"><span t-field="doc.payment_term_id.name"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:none;">Freight:</td>
+                                                <td style="vertical-align:top; border:none;">
+                                                    <span>To Pay</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:none;">Packing &amp; Forwarding:</td>
+                                                <td style="vertical-align:top; border:none;">
+                                                    <span>Inclusive</span>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </td>
                             </tr>
@@ -219,8 +240,7 @@
                                 <tr style="background:#efefef;">
                                     <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:4%;">Sr. No</th>
                                     <th style="border:1px solid #000; font-weight:bold; text-align:center; width:8%;">HSN</th>
-                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:left; width:36%;">Product Description</th>
-                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:8%;">Delivery Period</th>
+                                    <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:left; width:44%;">Product Description</th>
                                     <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:7%;">Quantity</th>
                                     <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:10%;">Rate Per Unit</th>
                                     <th style="border:1px solid #000; font-weight:bold; padding:6px; text-align:center; width:6%;">Disc %</th>
@@ -243,17 +263,7 @@
                                             <td style="border:1px solid #000; padding:6px;">
                                                 <span t-field="line.name"/>
                                             </td>
-                                            <td style="border:1px solid #000; padding:6px; text-align:center;">
-                                                <t t-set="delivery_target" t-value="doc.commitment_date or doc.expected_date"/>
-                                                <t t-if="delivery_target and doc.create_date">
-                                                    <t t-set="delivery_days" t-value="(delivery_target.date() - doc.create_date.date()).days"/>
-                                                    <t t-set="delivery_weeks" t-value="(delivery_days + 6) // 7 if delivery_days > 0 else 2"/>
-                                                    <span t-esc="delivery_weeks"/> Weeks
-                                                </t>
-                                                <t t-else="">
-                                                    -
-                                                </t>
-                                            </td>
+
                                             <td style="border:1px solid #000; padding:6px; text-align:right;">
                                                 <span t-field="line.product_uom_qty"/>
                                             </td>
@@ -295,12 +305,22 @@
                                 </div>
 
                                 <!-- GST -->
-                                <div style="padding:6px;">
+                                <div style="border-bottom:1px solid #000; padding:6px;">
                                     <span style="font-weight:bold;">
                                         GST Applicable:
                                     </span>
                                     <span style="float:right;">
                                         <span t-esc="'{:,.2f}'.format(doc.amount_tax)"/>
+                                    </span>
+                                </div>
+
+                                <!-- TOTAL AMOUNT -->
+                                <div style="padding:6px; background:#efefef;">
+                                    <span style="font-weight:bold;">
+                                        Total Amount:
+                                    </span>
+                                    <span style="float:right; font-weight:bold;">
+                                        <span t-esc="'{:,.2f}'.format(doc.amount_total)"/>
                                     </span>
                                 </div>
                             </div>
