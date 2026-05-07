@@ -171,7 +171,8 @@
             <!-- Replace Company Name with Customer field for Leads -->
             <xpath expr="//field[@name='partner_name']" position="replace">
                 <field name="partner_id" string="Customer" widget="res_partner_many2one" 
-                       context="{'res_partner_search_mode': 'customer', 'show_vat': True}"/>
+                       context="{'res_partner_search_mode': 'customer', 'show_vat': True}"
+                       required="1"/>
             </xpath>
         </field>
     </record>
