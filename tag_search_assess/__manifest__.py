@@ -8,12 +8,13 @@
         - Adds a user-wise permission to hide 'Search More...' in tag fields.
     """,
     'author': 'Techvizor',
-    'depends': ['base', 'crm', 'contacts', 'sales_team'],
+    'depends': ['base', 'crm', 'contacts', 'sales_team', 'utm'],
     'data': [
         'views/res_users_views.xml',
         'views/crm_lead_views.xml',
         'views/res_partner_views.xml',
         'views/tag_views.xml',
+        'views/utm_source_views.xml',
     ],
     'installable': True,
     'application': False,

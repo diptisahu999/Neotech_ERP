@@ -26,6 +26,18 @@
                        invisible="can_search_more_tags"
                        options="{'no_create': True, 'no_create_edit': True, 'no_search_more': True}"/>
             </xpath>
+
+            <!-- Source Field (Standard) -->
+            <xpath expr="//field[@name='source_id']" position="attributes">
+                <attribute name="invisible">not can_search_more_tags</attribute>
+            </xpath>
+            <!-- Source Field (Restricted) -->
+            <xpath expr="//field[@name='source_id']" position="after">
+                <field name="source_id"
+                       invisible="can_search_more_tags"
+                       options="{'no_create': True, 'no_create_edit': True, 'no_search_more': True}"/>
+            </xpath>
+
         </field>
     </record>
 </odoo>
