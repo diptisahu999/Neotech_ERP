@@ -40,7 +40,7 @@ class ReportMerge(models.AbstractModel):
         # Define the list of reports that should support PDF merging
         allowed_reports = [
             'sales_reports.report_unified_quotation_new',
-            'sales_reports.report_quotation_vashi_style_document',
+            'sales_reports.report_quotation_new_format_document',
             'sales_reports.report_unified_quotation',
             'sales_reports.report_unified_proforma'
         ]

@@ -5,7 +5,7 @@
     <!-- NEW QUOTATION REPORT TEMPLATE -->
     <!-- ====================================================== -->
 
-    <template id="report_quotation_vashi_style_document">
+    <template id="report_quotation_new_format_document">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
 
@@ -24,15 +24,15 @@
 
                         <table style="width:100%; border-collapse:collapse; border:1px solid #000; table-layout:fixed;">
                             <tr>
-                                <td style="width:28%; text-align:center; vertical-align:middle; padding:1px; border:0px solid #000;">
+                                <td style="width:28%; text-align:center; vertical-align:middle; padding:1px; border-right:1px solid #FFF;">
                                     <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
-                                        style="max-width:300px; max-height:140px;"/>
+                                        style="max-width:265px; max-height:120px;"/>
                                 </td>
 
                                 <!-- COMPANY DETAILS -->
                                 <td style="width:44%; text-align:center; vertical-align:top; padding-top:12px;">
                                     <!-- COMPANY NAME -->
-                                    <div style="font-size:24px; font-weight:bold; line-height:24px; color:#243d68;">
+                                    <div style="font-size:20px; font-weight:bold; line-height:24px; color:#000000;">
                                         <span t-field="company.name"/>
                                     </div>
                                     <!-- ADDRESS -->
@@ -85,9 +85,9 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <!-- CASE NO -->
+                                            <!-- REVISION NO -->
                                             <td style="border-right:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
-                                                <strong>Case No :</strong>
+                                                <strong>Revision No :</strong>
                                                 <br/>
                                                 <span> - </span>
                                             </td>
@@ -116,11 +116,16 @@
                                     <div style="font-size:13px; line-height:18px;">
                                         <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
                                             <tr>
-                                                <td style="width:110px; font-weight:bold; vertical-align:top; border:none;">Customer Details:</td>
-                                                <td style="vertical-align:top; word-wrap: break-word; border:none;">
+                                                <td style="width:130px; font-weight:bold; vertical-align:top; border:1px solid #FFF; color: #000;">Company Name:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:1px solid #FFF;">
                                                     <div style="font-weight:bold; margin-bottom:4px;">
                                                         <span t-field="doc.partner_id.name"/>
                                                     </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:1px solid #FFF; color: #000;">Company Address:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:1px solid #FFF;">
                                                     <div style="word-wrap: break-word; border:none;">
                                                         <span t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
                                                     </div>
@@ -135,16 +140,16 @@
                                     <div style="font-size:13px; line-height:18px;">
                                         <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
                                             <tr>
-                                                <td style="width:85px; font-weight:bold; vertical-align:top; border:none;">Name:</td>
-                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-field="doc.partner_id.name"/></td>
+                                                <td style="width:150px; font-weight:bold; vertical-align:top; border:1px solid #FFF;">Contact Person Name:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:1px solid #FFF;"><span t-field="doc.partner_id.person_name"/></td>
                                             </tr>
                                             <tr>
-                                                <td style="font-weight:bold; vertical-align:top; border:none;">Contact No:</td>
-                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-esc="doc.partner_id.mobile or doc.partner_id.phone or '-'"/></td>
+                                                <td style="font-weight:bold; vertical-align:top; border:1px solid #FFF;">Contact No:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:1px solid #FFF;"><span t-esc="doc.partner_id.mobile or doc.partner_id.phone or '-'"/></td>
                                             </tr>
                                             <tr>
-                                                <td style="font-weight:bold; vertical-align:top; border:none;">Email Id:</td>
-                                                <td style="vertical-align:top; word-wrap: break-word; border:none;"><span t-field="doc.partner_id.email"/></td>
+                                                <td style="font-weight:bold; vertical-align:top; border:1px solid #FFF;">Email Id:</td>
+                                                <td style="vertical-align:top; word-wrap: break-word; border:1px solid #FFF;"><span t-field="doc.partner_id.email"/></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -156,11 +161,11 @@
                                 <td style="width:55%; vertical-align:top; border-right:1px solid #000; padding:8px;">
                                     <div style="font-size:13px; line-height:18px;">
                                         <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
-                                            <tr>
+                                            <!-- <tr>
                                                 <td style="width:170px; font-weight:bold; vertical-align:top; border:none;">Customer Reference No.:</td>
                                                 <td style="vertical-align:top; border:none;"><span t-field="doc.client_order_ref"/></td>
-                                            </tr>
-                                            <tr>
+                                            </tr> -->
+                                            <!-- <tr>
                                                 <td style="font-weight:bold; vertical-align:top; border:none;">Price Validity:</td>
                                                 <td style="vertical-align:top; border:none;">
                                                     <span t-if="doc.state in ['draft', 'sent'] and doc.validity_date">
@@ -171,20 +176,28 @@
                                                         -
                                                     </span>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                             <tr>
-                                                <td style="font-weight:bold; vertical-align:top; border:none;">Sales Person:</td>
-                                                <td style="vertical-align:top; border:none;">
+                                                <td style="width:120px; font-weight:bold; vertical-align:top; border:1px solid #FFF;">Sales Person:</td>
+                                                <td style="vertical-align:top; border:1px solid #FFF;">
                                                     <span style="color:#1d32ff; font-weight:bold;">
                                                         <span t-field="doc.user_id.name"/>
                                                     </span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="font-weight:bold; vertical-align:top; border:none;">Sales Person No:</td>
-                                                <td style="vertical-align:top; border:none;">
+                                                <td style="font-weight:bold; vertical-align:top; border:1px solid #FFF;">Sales Person No:</td>
+                                                <td style="vertical-align:top; border:1px solid #FFF;">
                                                     <span style="color:#1d32ff; font-weight:bold;">
                                                         <span t-esc="doc.user_id.phone or doc.user_id.mobile or doc.user_id.partner_id.phone or '-'"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:bold; vertical-align:top; border:1px solid #FFF;">Email Id:</td>
+                                                <td style="vertical-align:top; border:1px solid #FFF;">
+                                                    <span style="color:#1d32ff; font-weight:bold;">
+                                                        <span t-esc="doc.user_id.email or '-'"/>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -197,21 +210,21 @@
                                     <div style="font-size:13px; line-height:18px;">
                                         <table style="width:100%; border:none; border-collapse:collapse; table-layout:fixed;">
                                             <tr>
-                                                <td style="width:140px; font-weight:bold; vertical-align:top; border:none;">Payment Terms:</td>
-                                                <td style="vertical-align:top; border:none;"><span t-field="doc.payment_term_id.name"/></td>
+                                                <td style="width:110px; font-weight:bold; vertical-align:top; border:1px solid #FFF;">Payment Terms:</td>
+                                                <td style="vertical-align:top; border:1px solid #FFF;"><span t-field="doc.payment_term_id.name"/></td>
                                             </tr>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td style="font-weight:bold; vertical-align:top; border:none;">Freight:</td>
                                                 <td style="vertical-align:top; border:none;">
                                                     <span>To Pay</span>
                                                 </td>
-                                            </tr>
-                                            <tr>
+                                            </tr> -->
+                                            <!-- <tr>
                                                 <td style="font-weight:bold; vertical-align:top; border:none;">Packing &amp; Forwarding:</td>
                                                 <td style="vertical-align:top; border:none;">
                                                     <span>Inclusive</span>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </table>
                                     </div>
                                 </td>
@@ -341,19 +354,19 @@
                             <div style="display:table; width:100%; border-collapse:collapse; border-left:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000; font-size:13px;">
                                 <div style="display:table-row;">
                                     <!-- LEFT -->
-                                    <div style="display:table-cell; width:50%; vertical-align:top; border-right:1px solid #000; padding:6px 8px; line-height:18px;">
+                                    <!-- <div style="display:table-cell; width:50%; vertical-align:top; border-right:1px solid #000; padding:6px 8px; line-height:18px;">
                                         <div style="font-size:14px;"><strong>Remark:</strong></div>
                                         <div style="margin-top:6px;">
                                             <t t-if="doc.remarks_section">
                                                 <span t-field="doc.remarks_section"/>
                                             </t>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <!-- RIGHT -->
                                     <div style="display:table-cell; width:50%; vertical-align:top; padding:6px 8px; line-height:18px;">
-                                        <div style="font-size:14px; font-weight:bold; text-decoration:underline; margin-bottom:8px;">
-                                            NEFT / RTGS Instructions:
+                                        <div style="font-size:14px; font-weight:bold; margin-bottom:8px;">
+                                            Bank Details:
                                         </div>
 
                                         <t t-if="company.partner_id.bank_ids">
@@ -388,7 +401,9 @@
                                 Terms &amp; Conditions:
                             </div>
                             <div style="margin-top:4px;">
-                                <span t-field="doc.terms_section"/>
+                                <div style="margin-top: 8px;">
+                                    <span t-field="doc.terms_section"/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -416,13 +431,13 @@
         <field name="name">Quotation New Format</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">sales_reports.report_quotation_vashi_style_document</field>
-        <field name="report_file">sales_reports.report_quotation_vashi_style_document</field>
+        <field name="report_name">sales_reports.report_quotation_new_format_document</field>
+        <field name="report_file">sales_reports.report_quotation_new_format_document</field>
         <field name="binding_model_id" ref="sale.model_sale_order"/>
         <field name="binding_type">report</field>
         <field name="paperformat_id" ref="paperformat_quotation_full"/>
         <field name="print_report_name">
-            'Quotation - %s' % (object.name)
+            'Quotation - ' + (object.name or 'QUO') + ' - ' + (object.partner_id.name or 'Customer')
         </field>
     </record>
 
