@@ -75,7 +75,7 @@
                                             <td style="width:50%; border-right:1px solid #000; border-bottom:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
                                                 <strong>Quote No :</strong>
                                                 <br/>
-                                                <span t-field="doc.name"/>
+                                                <span t-esc="doc.original_order_id.name if doc.original_order_id else doc.name"/>
                                             </td>
                                             <!-- QUOTE DATE -->
                                             <td style="width:50%; border-bottom:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
@@ -89,7 +89,7 @@
                                             <td style="border-right:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
                                                 <strong>Revision No :</strong>
                                                 <br/>
-                                                <span> - </span>
+                                                <span t-field="doc.revision_number_display"/>
                                             </td>
                                             <!-- QUOTE UPDATE -->
                                             <td style="border-right:1px solid #000; padding:5px 8px; vertical-align:top; font-size:12px;">
