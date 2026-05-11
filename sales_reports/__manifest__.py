@@ -11,7 +11,7 @@
     "data": [
         "data/report_paperformat_data.xml",
         "reports/custom_quotation_report.xml",
-        "reports/new_quotation_report.xml",
+        # "reports/new_quotation_report.xml",
         "reports/new_quotation_format_report.xml",
         "views/sale_order_upload_document.xml",
     ],
