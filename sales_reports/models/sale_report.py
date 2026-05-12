@@ -53,7 +53,7 @@ class SaleOrder(models.Model):
         self.ensure_one()
 
         template = self.env.ref('sale.email_template_edi_sale')
-        report = self.env.ref('sales_reports.action_unified_quotation_new')
+        report = self.env.ref('sales_reports.action_report_quotation_vashi_style')
         pdf, _ = report._render_qweb_pdf(
             report.report_name,
             res_ids=[self.id]
