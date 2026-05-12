@@ -63,9 +63,30 @@ class SaleOrder(models.Model):
                                                     l_obj = line._fields[l_f]
                                                     l_ov = line[l_f]
                                                     
+                                                    # def fmt(v, obj):
+                                                    #     if obj.type == 'many2one': return order.env[obj.comodel_name].browse(v).display_name or "None"
+                                                    #     return str(v)
                                                     def fmt(v, obj):
-                                                        if obj.type == 'many2one': return order.env[obj.comodel_name].browse(v).display_name or "None"
-                                                        return str(v)
+                                                        if obj.type == 'many2one':
+
+                                                            # Empty value
+                                                            if not v:
+                                                                return "None"
+
+                                                            # Already a recordset
+                                                            if hasattr(v, '_name'):
+                                                                return v.display_name or "None"
+
+                                                            # Tuple/list format
+                                                            if isinstance(v, (list, tuple)):
+                                                                v = v[0] if v else False
+
+                                                            # Integer ID
+                                                            if isinstance(v, int):
+                                                                rec = order.env[obj.comodel_name].browse(v)
+                                                                return rec.display_name or "None"
+
+                                                            return str(v)
                                                     
                                                     ov_s, nv_s = fmt(l_ov, l_obj), fmt(l_nv, l_obj)
                                                     if ov_s != nv_s:
