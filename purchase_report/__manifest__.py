@@ -7,6 +7,7 @@
     "data": [
         "data/report_paperformat_data.xml",
         "reports/new_purchase_order_report_action.xml",
+        "reports/new_format_purchase_order_report_action.xml",
         "views/purchase_report_view.xml"
     ],
     "application": True,
