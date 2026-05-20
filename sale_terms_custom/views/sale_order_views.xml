@@ -6,28 +6,27 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="partner_invoice_id" string="Invoice Address" context="{'default_type':'invoice'}" options='{"always_reload": True}'/>
-                <field name="partner_shipping_id" string="Delivery Address" context="{'default_type':'delivery'}" options='{"always_reload": True}'/>
+                <field name="partner_invoice_id" string="Invoice Address" context="{'default_type':'invoice'}" options='{"always_reload": True}' readonly="state not in ('draft', 'sent')"/>
+                <field name="partner_shipping_id" string="Delivery Address" context="{'default_type':'delivery'}" options='{"always_reload": True}' readonly="state not in ('draft', 'sent')"/>
             </field>
             <field name="payment_term_id" position="replace">
                 <label for="payment_term_id"/>
                 <div class="o_row">
-                    <field name="payment_term_id" options="{'no_quick_create': False}" placeholder="Select Payment Terms..."/>
-                    <button name="%(account.action_payment_term_form)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Payment Term" style="padding: 0;" target="new"/>
+                    <field name="payment_term_id" options="{'no_quick_create': False}" placeholder="Select Payment Terms..." readonly="state not in ('draft', 'sent')"/>
+                    <button name="%(account.action_payment_term_form)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Payment Term" style="padding: 0;" target="new" invisible="state not in ('draft', 'sent')"/>
                 </div>
                 <label for="terms_condition_id" string="Terms and Condition"/>
                 <div class="o_row">
-                    <field name="terms_condition_id" options="{'no_quick_create': True}" placeholder="Select Terms Template..."/>
-                    <button name="action_apply_terms" type="object" icon="fa-arrow-right" class="btn btn-link" title="Apply Terms" style="padding: 0;"/>
-                    <button name="%(sale_terms_custom.action_terms_and_conditions)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Terms" style="padding: 0;" target="new"/>
+                    <field name="terms_condition_id" options="{'no_quick_create': True}" placeholder="Select Terms Template..." readonly="state not in ('draft', 'sent')"/>
+                    <button name="action_apply_terms" type="object" icon="fa-arrow-right" class="btn btn-link" title="Apply Terms" style="padding: 0;" invisible="state not in ('draft', 'sent')"/>
+                    <button name="%(sale_terms_custom.action_terms_and_conditions)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Terms" style="padding: 0;" target="new" invisible="state not in ('draft', 'sent')"/>
                 </div>
                 <label for="remarks_id" string="Remarks"/>
                 <div class="o_row">
-                    <field name="remarks_id" options="{'no_quick_create': True}" placeholder="Select Remarks Template..."/>
-                    <button name="%(sale_terms_custom.action_sale_remarks)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Remarks" style="padding: 0;" target="new"/>
+                    <field name="remarks_id" options="{'no_quick_create': True}" placeholder="Select Remarks Template..." readonly="state not in ('draft', 'sent')"/>
+                    <button name="%(sale_terms_custom.action_sale_remarks)d" type="action" icon="fa-plus" class="btn btn-link" title="Create New Remarks" style="padding: 0;" target="new" invisible="state not in ('draft', 'sent')"/>
                 </div>
-                <field name="additional_notes"/>
-
+                <field name="additional_notes" readonly="state not in ('draft', 'sent')"/>
             </field>
 
             <xpath expr="//field[@name='note']" position="before">
@@ -52,6 +51,12 @@
             <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d']" position="attributes">
                 <attribute name="name">action_open_create_invoice_wizard</attribute>
                 <attribute name="type">object</attribute>
+            </xpath>
+            <xpath expr="//field[@name='l10n_in_gst_treatment']" position="attributes" raise_on_xpath_error="False">
+                <attribute name="readonly">state not in ('draft', 'sent')</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="readonly">state not in ('draft', 'sent')</attribute>
             </xpath>
         </field>
     </record>
