@@ -8,7 +8,7 @@
         When a revision is created, the quotation is duplicated with a new revision number (e.g., S00031-R1),
         and the original quotation is canceled.
     """,
-    'depends': ['sale_management'],
+    'depends': ['sale_management', 'sale_terms_custom'],
     'data': [
         'views/sale_order_views.xml',
     ],

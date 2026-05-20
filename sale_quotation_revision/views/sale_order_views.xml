@@ -31,4 +31,22 @@
             </xpath>
         </field>
     </record>
+
+    <!-- Submit Revision Button -->
+    <record id="view_order_form_inherit_revison_submit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.revison.submit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_submit_revision"
+                    type="object"
+                    string="Submit"
+                    class="btn btn-primary"
+                    invisible="not show_submit_button or state == 'sale'"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
