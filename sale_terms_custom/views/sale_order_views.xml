@@ -61,5 +61,18 @@
         </field>
     </record>
 
+    <record id="view_order_form_inherit_price_precision" model="ir.ui.view">
+        <field name="name">sale.order.form.price.precision</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list//field[@name='price_unit']" position="attributes">
+                <attribute name="digits">[16,2]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list//field[@name='price_subtotal']" position="attributes">
+                <attribute name="digits">[16,2]</attribute>
+            </xpath>
+        </field>
+    </record>
 
 </odoo>

@@ -63,3 +63,11 @@ class SaleOrder(models.Model):
         action = self.env.ref('sale.action_view_sale_advance_payment_inv').read()[0]
         action['context'] = self._context.copy()
         return action
+
+
+
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    price_unit = fields.Float(digits=(16, 2))
+    price_subtotal = fields.Float(digits=(16, 2))
