@@ -73,3 +73,38 @@ class ProjectProject(models.Model):
             project.qa_line_ids.unlink()
 
         return super().unlink()
+    
+    # When assign Project to Project Manager, send Browser Notification to the assigned user
+    def write(self, vals):
+        old_users = {}
+
+        # Store old project managers before update
+        if 'user_id' in vals:
+            for project in self:
+                old_users[project.id] = project.user_id.id
+
+        result = super().write(vals)
+
+        # Send notification after update
+        if 'user_id' in vals:
+            for project in self:
+                new_user = project.user_id
+
+                if not new_user:
+                    continue
+
+                old_user_id = old_users.get(project.id)
+
+                # Prevent duplicate notification
+                if old_user_id == new_user.id:
+                    continue
+
+                self.env['notification.manager'].send_push_notification(
+                    user_ids=[new_user.id],
+                    title="Project Assigned",
+                    message=f"You have been assigned as Project Manager for project '{project.name}'.",
+                    notification_type='success',
+                    sticky=True
+                )
+
+        return result
