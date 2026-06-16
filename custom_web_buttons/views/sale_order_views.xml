@@ -13,4 +13,16 @@
                  but in Odoo 18, moving it once in the header is usually enough. -->
         </field>
     </record>
+
+    <!-- Hide the New button on the Sale Order list view -->
+    <record id="view_order_tree_inherit_hide_new_button" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit.hide.new.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <list position="attributes">
+                <attribute name="create">0</attribute>
+            </list>
+        </field>
+    </record>
 </odoo>
