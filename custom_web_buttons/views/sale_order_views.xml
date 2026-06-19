@@ -14,15 +14,16 @@
         </field>
     </record>
 
-    <!-- Hide the New button on the Sale Order list view -->
-    <record id="view_order_tree_inherit_hide_new_button" model="ir.ui.view">
-        <field name="name">sale.order.tree.inherit.hide.new.button</field>
+    <!-- Hide the New button on CRM → Sales → My Quotations view -->
+    <record id="view_quotation_tree_inherit_hide_new_button" model="ir.ui.view">
+        <field name="name">sale.order.quotation.tree.hide.new.button</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
         <field name="arch" type="xml">
             <list position="attributes">
                 <attribute name="create">0</attribute>
             </list>
         </field>
     </record>
+
 </odoo>
