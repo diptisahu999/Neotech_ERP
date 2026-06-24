@@ -57,4 +57,34 @@
     <record id="purchase.product_product_action" model="ir.actions.act_window">
         <field name="context">{'create': False}</field>
     </record>
+
+    <!-- Manufacturing (MRP) Overrides -->
+    <record id="mrp.product_template_action" model="ir.actions.act_window">
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <record id="mrp.mrp_product_variant_action" model="ir.actions.act_window">
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <!-- Accounting / Invoicing Overrides -->
+    <record id="account.product_product_action_sellable" model="ir.actions.act_window">
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <record id="account.product_product_action_purchasable" model="ir.actions.act_window">
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <!-- Restrict inline product creation on Invoice/Bill lines -->
+    <record id="view_move_form_inherit_restrict_product" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.restrict.product</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']//field[@name='product_id']" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
