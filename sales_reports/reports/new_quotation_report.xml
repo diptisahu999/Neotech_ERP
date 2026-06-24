@@ -174,7 +174,7 @@
                                                     <th name="th_uom" class="text-center text-dark" style="font-weight: bold; border-right: 1px solid #000; border-bottom: 1px solid #000;">Unit</th>
                                                     <th name="th_rate" class="text-center text-dark" style="font-weight: bold; border-right: 1px solid #000; border-bottom: 1px solid #000;">Unit Price</th>
                                                     <th t-if="has_discount" name="th_rate" class="text-center text-dark" style="font-weight: bold; border-right: 1px solid #000; border-bottom: 1px solid #000;">Disc.%</th>
-                                                    <th name="th_taxes" class="text-center text-dark" style="font-weight: bold; border-right: 1px solid #000; border-bottom: 1px solid #000;">Taxes</th>
+                                                    <th name="th_taxes" class="text-center text-dark" style="font-weight: bold; border-right: 1px solid #000; border-bottom: 1px solid #000;">GST %</th>
                                                     <th name="th_amount" class="text-center text-dark" style="font-weight: bold; border-bottom: 1px solid #000;">Amount</th>
                                                 </tr>
                                             </thead>
@@ -195,10 +195,7 @@
                                                             <td class="text-center px-2" style="border-right: 1px solid #000; border-bottom: 1px solid #000;"><span t-field="line.price_unit"/></td>
                                                             <td t-if="has_discount" class="text-center px-2" style="border-right: 1px solid #000; border-bottom: 1px solid #000;"><span t-field="line.discount"/></td>
                                                             <td class="text-center px-2" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">
-                                                                <t t-if="line.tax_id">
-                                                                    <t t-set="taxes" t-value="', '.join([tax.name for tax in line.tax_id])"/>
-                                                                    <span t-out="taxes"/>
-                                                                </t>
+                                                                <span t-field="line.gst_percent"/>%
                                                             </td>
                                                             <td class="text-center px-2" style="border-bottom: 1px solid #000;"><span t-field="line.price_subtotal"/></td>
                                                         </tr>
