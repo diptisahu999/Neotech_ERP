@@ -142,12 +142,12 @@
         <field name="arch" type="xml">
             <!-- Opportunity -->
             <xpath expr="//group[field[@name='tag_ids']][1]/field[@name='tag_ids']" position="after">
-                <field name="product_id"/>
+                <field name="product_id" options="{'no_create': True, 'no_create_edit': True}"/>
             </xpath>
 
             <!-- Lead -->
             <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position="after">
-                <field name="product_id"/>
+                <field name="product_id" options="{'no_create': True, 'no_create_edit': True}"/>
             </xpath>
 
             <!-- ✅ Lead -> Add below Sales Team -->

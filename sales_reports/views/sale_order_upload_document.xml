@@ -40,4 +40,17 @@
             </xpath>
         </field>
     </record>
+
+    <!-- Hide New/Create button from Sales and Purchase product views -->
+    <record id="sale.product_template_action" model="ir.actions.act_window">
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <record id="purchase.product_normal_action_puchased" model="ir.actions.act_window">
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <record id="product.product_normal_action_sell" model="ir.actions.act_window">
+        <field name="context">{'create': False}</field>
+    </record>
 </odoo>

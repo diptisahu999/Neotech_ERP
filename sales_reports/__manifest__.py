@@ -7,7 +7,7 @@
         2. Merge New custom quotation report with Document Upload.
         3. Send by mail functionality check who's login, accorading that send the mail -> Pick mail id from outgoing mail server configuration and send the mail.
     """,
-    "depends": ["sale", "mail"],
+    "depends": ["sale", "mail", "purchase"],
     "data": [
         "data/report_paperformat_data.xml",
         "reports/custom_quotation_report.xml",
