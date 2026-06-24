@@ -165,13 +165,12 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
 
-            <!-- Remove original Customer field from its standard location to avoid duplicates -->
-            <xpath expr="//field[@name='partner_id']" position="replace"/>
 
             <!-- Replace Company Name with Customer field for Leads -->
             <xpath expr="//field[@name='partner_name']" position="replace">
                 <field name="partner_id" string="Customer" widget="res_partner_many2one" 
                        context="{'res_partner_search_mode': 'customer', 'show_vat': True}"
+                       options="{'no_create': True, 'no_create_edit': True}"
                        required="1"/>
             </xpath>
         </field>
@@ -208,6 +207,21 @@
                 <attribute name="invisible">not partner_is_company</attribute>
             </xpath>
 
+        </field>
+    </record>
+
+    <!-- Remove 'New' button from Opportunity Contact (partner_id) Search More dialog -->
+    <record id="crm_lead_opportunity_partner_no_create" model="ir.ui.view">
+        <field name="name">crm.lead.form.opportunity.partner.no.create</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='opportunity_partner']//field[@name='partner_id']" position="replace">
+                <field name="partner_id"
+                       widget="res_partner_many2one"
+                       options="{'no_create': True, 'no_create_edit': True}"
+                       required="1"/>
+            </xpath>
         </field>
     </record>
 
