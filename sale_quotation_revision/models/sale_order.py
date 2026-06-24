@@ -13,7 +13,7 @@ class SaleOrder(models.Model):
     @api.depends('revision_number')
     def _compute_revision_number_display(self):
         for order in self:
-            order.revision_number_display = str(order.revision_number).zfill(3)
+            order.revision_number_display = f"R{order.revision_number}"
 
     revision_number = fields.Integer(string='Revision', default=0, copy=False)
     active = fields.Boolean(string='Active', default=True, copy=False)
@@ -23,6 +23,21 @@ class SaleOrder(models.Model):
     revision_count = fields.Integer(compute='_compute_revision_count', string='Revision Count')
     show_submit_button = fields.Boolean(string='Show Submit Button', default=False, copy=False)
     revision_change_log = fields.Text(string='Revision Change Log', copy=False)
+
+    @api.model
+    def action_fix_snapshot_names(self):
+        # Fix snapshot names
+        snapshots = self.with_context(active_test=False).search([('name', 'like', '%-00%')])
+        for snap in snapshots:
+            if '-' in snap.name:
+                base, suffix = snap.name.rsplit('-', 1)
+                if suffix.isdigit():
+                    snap.name = f"{base}-R{int(suffix)}"
+        
+        # Fix stored revision_number_display
+        orders = self.with_context(active_test=False).search([('revision_number_display', 'like', '00%')])
+        for order in orders:
+            order.revision_number_display = f"R{order.revision_number}"
 
     # This method hide / show 'Submit' Button
     # This Button used for Submit Revision (Create New Revision)
@@ -221,7 +236,7 @@ class SaleOrder(models.Model):
     #                     # CREATE A SNAPSHOT ARCHIVE of the old version
     #                     root_order = order.original_order_id or order
     #                     snapshot_vals = {
-    #                         'name': f"{order.name}-R{order.revision_number_display}",
+    #                         'name': f"{order.name}-{order.revision_number_display}",
     #                         'original_order_id': root_order.id,
     #                         'state': 'cancel',
     #                         'active': False,
@@ -229,7 +244,7 @@ class SaleOrder(models.Model):
     #                     }
     #                     order.with_context(no_revision=True, mail_auto_subscribe_no_notify=True).copy(snapshot_vals)
 
-    #                     msg = _(" Revision %s :: triggered by: %s") % (str(new_rev).zfill(3), " : ".join(details))
+    #                     msg = _(" Revision %s :: triggered by: %s") % (order.revision_number_display, " : ".join(details))
     #                     order.message_post(body=msg)
     #                 break # Single record update logic
         
@@ -398,7 +413,7 @@ class SaleOrder(models.Model):
             # Create Revision Snapshot
             root_order = order.original_order_id or order
             snapshot_vals = {
-                'name': f"{order.name}-R{order.revision_number_display}",
+                'name': f"{order.name}-{order.revision_number_display}",
                 'original_order_id': root_order.id,
                 'state': 'cancel',
                 'active': False,

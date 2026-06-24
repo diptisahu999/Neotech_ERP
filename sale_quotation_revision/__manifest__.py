@@ -11,6 +11,7 @@
     'depends': ['sale_management', 'sale_terms_custom'],
     'data': [
         'views/sale_order_views.xml',
+        'data/fix_names.xml',
     ],
     'installable': True,
     'application': False,

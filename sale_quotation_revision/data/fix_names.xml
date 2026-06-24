@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Execute the python function to fix old snapshot names and stored fields on module upgrade -->
+        <function model="sale.order" name="action_fix_snapshot_names"/>
+    </data>
+</odoo>
