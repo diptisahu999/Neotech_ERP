@@ -9,6 +9,9 @@
                 <field name="partner_invoice_id" string="Invoice Address" context="{'default_type':'invoice'}" options='{"always_reload": True}' readonly="state not in ('draft', 'sent')"/>
                 <field name="partner_shipping_id" string="Delivery Address" context="{'default_type':'delivery'}" options='{"always_reload": True}' readonly="state not in ('draft', 'sent')"/>
             </field>
+            <xpath expr="//field[@name='pricelist_id']" position="attributes">
+                <attribute name="string">Currency</attribute>
+            </xpath>
             <field name="payment_term_id" position="replace">
                 <label for="payment_term_id"/>
                 <div class="o_row">
