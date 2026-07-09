@@ -14,6 +14,15 @@ class SaleOrder(models.Model):
     remarks_section = fields.Html(string="Remarks Section", compute="_compute_sections", store=True)
     terms_section = fields.Html(string="Terms & Conditions Section", compute="_compute_sections", store=True)
 
+    @api.depends('partner_id', 'company_id')
+    def _compute_pricelist_id(self):
+        super(SaleOrder, self)._compute_pricelist_id()
+        for order in self:
+            if not order.partner_id:
+                inr_pricelist = self.env['product.pricelist'].search([('currency_id.name', '=', 'INR')], limit=1)
+                if inr_pricelist:
+                    order.pricelist_id = inr_pricelist.id
+
     @api.depends("remarks_id", "terms_condition_id")
     def _compute_sections(self):
         for record in self:
