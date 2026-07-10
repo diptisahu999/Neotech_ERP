@@ -50,6 +50,18 @@ class SaleOrder(models.Model):
         for record in self:
             record._onchange_remarks_or_terms()
 
+    @api.depends('partner_id', 'company_id')
+    def _compute_pricelist_id(self):
+        super()._compute_pricelist_id()
+        for order in self:
+            if order.state == 'draft' and order.pricelist_id and order.pricelist_id.currency_id.name == 'AED':
+                inr_pricelist = self.env['product.pricelist'].search([
+                    ('currency_id.name', '=', 'INR'),
+                    ('company_id', 'in', (False, order.company_id.id))
+                ], limit=1)
+                if inr_pricelist:
+                    order.pricelist_id = inr_pricelist
+
 
 
     def _create_invoices(self, grouped=False, final=False, date=None):
