@@ -1,4 +1,6 @@
+# pyrefly: ignore [missing-import]
 from odoo import models, fields, api, _
+# pyrefly: ignore [missing-import]
 from odoo.exceptions import UserError
 import re
 import ast
@@ -71,6 +73,21 @@ class SaleOrder(models.Model):
 
                 _logger.info("REVISION WRITE tracking check on order %s (show_submit_button=%s): vals = %s", order.name, order.show_submit_button, vals)
                 if any(field not in ignore_fields for field in vals):
+                    # Create the snapshot BEFORE writing the new values to database
+                    if not order.show_submit_button:
+                        root_order = order.original_order_id or order
+                        snapshot_vals = {
+                            'name': f"{order.name}-{order.revision_number_display}",
+                            'original_order_id': root_order.id,
+                            'state': 'cancel',
+                            'active': False,
+                            'revision_number': order.revision_number,
+                        }
+                        order.with_context(
+                            no_revision=True,
+                            mail_auto_subscribe_no_notify=True
+                        ).copy(snapshot_vals)
+
                     # Capture old/original values before they are modified in this write
                     old_vals = {}
                     if order.show_submit_button and order.revision_change_log:
@@ -410,23 +427,8 @@ class SaleOrder(models.Model):
                                 f" {f_obj.string} : "
                                 f"{old_str} → {new_str}"
                             )
-            # Create Revision Snapshot
-            root_order = order.original_order_id or order
-            snapshot_vals = {
-                'name': f"{order.name}-{order.revision_number_display}",
-                'original_order_id': root_order.id,
-                'state': 'cancel',
-                'active': False,
-                'revision_number': order.revision_number,
-            }
-
             # Capture current revision display name before updating
             rev_disp = order.revision_number_display
-
-            order.with_context(
-                no_revision=True,
-                mail_auto_subscribe_no_notify=True
-            ).copy(snapshot_vals)
 
             # Update Current Order
             order.write({

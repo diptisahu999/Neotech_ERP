@@ -1,4 +1,6 @@
+# pyrefly: ignore [missing-import]
 from odoo import api, fields, models, _
+# pyrefly: ignore [missing-import]
 from odoo.exceptions import ValidationError
 
 
