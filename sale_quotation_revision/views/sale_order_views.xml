@@ -29,6 +29,9 @@
             <xpath expr="//field[@name='name']" position="after">
                 <field name="revision_number_display" string="Rev" optional="show"/>
             </xpath>
+            <xpath expr="//field[@name='state']" position="after">
+                <button name="action_preview_sale_order" string="Preview" type="object" icon="fa-eye"/>
+            </xpath>
         </field>
     </record>
 
@@ -46,6 +49,24 @@
                     class="btn btn-primary"
                     invisible="not show_submit_button or state == 'sale'"/>
             </xpath>
+        </field>
+    </record>
+
+    <!-- Custom Tree/List view for Revisions -->
+    <record id="view_revision_order_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree.revision</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <list string="Revisions" create="0" delete="0" edit="0" duplicate="0">
+                <field name="name"/>
+                <field name="revision_number_display" string="Revision"/>
+                <field name="date_order" widget="date"/>
+                <field name="partner_id"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="amount_total" sum="Total" widget="monetary"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'sale'"/>
+                <button name="action_preview_sale_order" string="Preview" type="object" icon="fa-eye"/>
+            </list>
         </field>
     </record>
 

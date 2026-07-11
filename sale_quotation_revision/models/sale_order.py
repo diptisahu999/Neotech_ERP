@@ -285,13 +285,25 @@ class SaleOrder(models.Model):
         root_order = self.original_order_id or self
         # Domain includes the root order and all its revisions
         domain = ['|', ('id', '=', root_order.id), ('original_order_id', '=', root_order.id)]
+        list_view_id = self.env.ref('sale_quotation_revision.view_revision_order_tree').id
+        form_view_id = self.env.ref('sale.view_order_form').id
         return {
             'type': 'ir.actions.act_window',
             'name': _('Revisions'),
             'view_mode': 'list,form',
             'res_model': 'sale.order',
+            'views': [(list_view_id, 'list'), (form_view_id, 'form')],
             'domain': domain,
             'context': dict(self.env.context, create=False, active_test=False),
+        }
+
+    def action_preview_sale_order(self):
+        self.ensure_one()
+        # Open the HTML report view directly in a new tab without downloading
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': f'/report/html/sales_reports.report_quotation_new_format_document/{self.id}',
         }
     
     # This action for Submit Revision Button
