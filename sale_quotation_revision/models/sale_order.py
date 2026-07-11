@@ -25,6 +25,7 @@ class SaleOrder(models.Model):
     revision_count = fields.Integer(compute='_compute_revision_count', string='Revision Count')
     show_submit_button = fields.Boolean(string='Show Submit Button', default=False, copy=False)
     revision_change_log = fields.Text(string='Revision Change Log', copy=False)
+    pending_revision_id = fields.Many2one('sale.order', string='Pending Revision Snapshot', copy=False)
 
     @api.model
     def action_fix_snapshot_names(self):
@@ -69,6 +70,7 @@ class SaleOrder(models.Model):
                     'terms_section',
                     'remarks_section',
                     'note',
+                    'pending_revision_id',
                 ]
 
                 _logger.info("REVISION WRITE tracking check on order %s (show_submit_button=%s): vals = %s", order.name, order.show_submit_button, vals)
@@ -78,15 +80,16 @@ class SaleOrder(models.Model):
                         root_order = order.original_order_id or order
                         snapshot_vals = {
                             'name': f"{order.name}-{order.revision_number_display}",
-                            'original_order_id': root_order.id,
+                            'original_order_id': False,
                             'state': 'cancel',
                             'active': False,
                             'revision_number': order.revision_number,
                         }
-                        order.with_context(
+                        snapshot = order.with_context(
                             no_revision=True,
                             mail_auto_subscribe_no_notify=True
                         ).copy(snapshot_vals)
+                        super(SaleOrder, order).write({'pending_revision_id': snapshot.id})
 
                     # Capture old/original values before they are modified in this write
                     old_vals = {}
@@ -430,11 +433,19 @@ class SaleOrder(models.Model):
             # Capture current revision display name before updating
             rev_disp = order.revision_number_display
 
+            # Link the pending revision snapshot to the current order
+            if order.pending_revision_id:
+                root_order = order.original_order_id or order
+                order.pending_revision_id.write({
+                    'original_order_id': root_order.id,
+                })
+
             # Update Current Order
             order.write({
                 'revision_number': new_rev,
                 'show_submit_button': False,
                 'revision_change_log': False,
+                'pending_revision_id': False,
             })
 
             # Chatter Log
