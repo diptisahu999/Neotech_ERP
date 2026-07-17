@@ -1,9 +1,29 @@
 import base64
+# pyrefly: ignore [missing-import]
 from odoo import models, fields, api
 import re
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
+
+    def get_tax_breakdown(self):
+        self.ensure_one()
+        tax_breakdown = {}
+        for line in self.order_line:
+            if not line.display_type and line.tax_id:
+                price_unit_discounted = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+                taxes_computed = line.tax_id.compute_all(
+                    price_unit_discounted,
+                    self.currency_id,
+                    line.product_uom_qty,
+                    product=line.product_id,
+                    partner=self.partner_shipping_id or self.partner_id
+                )
+                for tax_info in taxes_computed.get('taxes', []):
+                    tax_name = tax_info['name']
+                    tax_amount = tax_info['amount']
+                    tax_breakdown[tax_name] = tax_breakdown.get(tax_name, 0.0) + tax_amount
+        return [{'name': name, 'amount': amount} for name, amount in tax_breakdown.items()]
 
     has_additional_notes = fields.Boolean(
         compute='_compute_has_additional_notes',

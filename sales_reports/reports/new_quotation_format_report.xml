@@ -279,6 +279,7 @@
 
                                             <td style="border:1px solid #000; padding:6px; text-align:right;">
                                                 <span t-field="line.product_uom_qty"/>
+                                                <span t-field="line.product_uom.name"/>
                                             </td>
                                             <td style="border:1px solid #000; padding:6px; text-align:right;">
                                                 <span t-field="line.price_unit"/>
@@ -322,14 +323,29 @@
                                 </div>
 
                                 <!-- GST -->
-                                <div style="border-bottom:1px solid #000; padding:6px;">
-                                    <span style="font-weight:bold;">
-                                        GST Applicable:
-                                    </span>
-                                    <span style="float:right;">
-                                        <span t-esc="'{:,.2f}'.format(doc.amount_tax)"/>
-                                    </span>
-                                </div>
+                                <t t-set="tax_breakdown" t-value="doc.get_tax_breakdown()"/>
+                                <t t-if="tax_breakdown">
+                                    <t t-foreach="tax_breakdown" t-as="tax_item">
+                                        <div style="border-bottom:1px solid #000; padding:6px;">
+                                            <span style="font-weight:bold;">
+                                                <span t-esc="tax_item['name']"/>:
+                                            </span>
+                                            <span style="float:right;">
+                                                <span t-esc="'{:,.2f}'.format(tax_item['amount'])"/>
+                                            </span>
+                                        </div>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <div style="border-bottom:1px solid #000; padding:6px;">
+                                        <span style="font-weight:bold;">
+                                            GST Applicable:
+                                        </span>
+                                        <span style="float:right;">
+                                            <span t-esc="'{:,.2f}'.format(doc.amount_tax)"/>
+                                        </span>
+                                    </div>
+                                </t>
 
                                 <!-- TOTAL AMOUNT -->
                                 <div style="padding:6px; background:#efefef;">
